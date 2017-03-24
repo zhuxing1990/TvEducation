@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">TV教育</string>
+    <string name="text">1.文字</string>
+    <string name="watch_history">观看历史</string>
+    <string name="ranking_list">排行榜</string>
+    <string name="children_education_graphics">儿童教育识图形</string>
+    <string name="children_education_games">儿童教育游戏</string>
+    <string name="education_for_everyone">教育人人通</string>
+    <string name="netease_open_class">网易公开课</string>
+    <string name="home_page">首页</string>
+    <string name="boutique_recommend">精品推荐</string>
+    <string name="infant_enlightenment">幼儿启蒙</string>
+    <string name="primary_and_secondary_schools">中小学</string>
+    <string name="foreign_study">外国留学</string>
+    <string name="open_class">公开课</string>
+    <string name="expert_lecture">专家讲座</string>
+    <string name="outdoor_activities">户外活动</string>
+    <string name="free_tutorial">免费教程</string>
+    <string name="alleducation">全部教育</string>
+    <string name="bestv">百事通</string>
+    <string name="aitewei">艾特维</string>
+    <string name="xdf">新东方</string>
+    <string name="primary_school">小学</string>
+    <string name="junior_middle_school">初中</string>
+    <string name="high_school">高中</string>
+    <string name="foreign_language_study">外语留学</string>
+    <string name="equivalency_exam">学历考试</string>
+
+</resources>

@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.vunke.education"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:design:25.1.0'
+    compile project(':InitActivity')
+    //OkhttpUtils
+    compile 'com.lzy.net:okgo:+'
+    //OKhttp rx
+    compile 'com.lzy.net:okrx:+'
+    //OkhttpServer
+    compile 'com.lzy.net:okserver:+'
+    //RX JAVA
+    compile 'io.reactivex:rxjava:+'
+    // RX Android
+    compile 'io.reactivex:rxandroid:+'
+    // Retrofit2
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    //引入 gosn 支持
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    //picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    // gson
+    compile 'com.google.code.gson:gson:2.8.0'
+
+}

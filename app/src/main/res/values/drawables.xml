@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="list_selected">#00000000</item>
+    <item type="drawable" name="list_normal">#ffffffff</item>
+    <item type="drawable" name="list_itemline">#ffe4e4e4</item>
+    <item type="drawable" name="transparent_bg">#00000000</item>
+    <item type="drawable" name="transparent_background">#00000000</item>
+    <item type="drawable" name="transparent_background_progress">#ff949494</item>
+    <item type="drawable" name="item_normal">#ff343434</item>
+    <item type="drawable" name="item_press">#ff2c2c2c</item>
+
+</resources>
