@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_background">
+	<ImageView 
+	    android:layout_marginLeft="50dp"
+	    android:layout_marginTop="30dp"
+	    android:src="@drawable/hanghang"
+	    android:id="@+id/test"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	    />
+    <TextView
+        android:layout_toRightOf="@id/test"
+        android:textColor="#99bec8f6"
+        android:text="排行榜TOP10"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/rankings_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="30sp" />
+
+    <com.vunke.education.view.TvFocusGridView2
+        android:paddingLeft="64dp"
+        android:paddingRight="64dp"
+        android:horizontalSpacing="100dp"
+        android:id="@+id/rankings_gread"
+        android:paddingTop="60dp"
+        android:layout_below="@id/rankings_text"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:verticalSpacing="45dp"
+        android:numColumns="5"/>
+</RelativeLayout>

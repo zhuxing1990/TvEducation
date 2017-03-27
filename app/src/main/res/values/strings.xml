@@ -16,7 +16,7 @@
     <string name="expert_lecture">专家讲座</string>
     <string name="outdoor_activities">户外活动</string>
     <string name="free_tutorial">免费教程</string>
-    <string name="alleducation">全部教育</string>
+    <string name="edication_video">教育视频</string>
     <string name="bestv">百事通</string>
     <string name="aitewei">艾特维</string>
     <string name="xdf">新东方</string>
@@ -25,5 +25,14 @@
     <string name="high_school">高中</string>
     <string name="foreign_language_study">外语留学</string>
     <string name="equivalency_exam">学历考试</string>
-
+    <string name="one_grade">一年级</string>
+    <string name="two_grade">二年级</string>
+    <string name="three_grade">三年级</string>
+    <string name="four_grade">四年级</string>
+    <string name="five_grade">五年级</string>
+    <string name="six_grade">六年级</string>
+    <string name="childeren_education_maths">儿童教育数学</string>
+    <string name="recently">最近</string>
+    <string name="look_to">观看至</string>
+    <string name="today">今天</string>
 </resources>

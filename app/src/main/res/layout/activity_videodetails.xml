@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_background">
+
+    <RelativeLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/layout_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="31dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/tveduecation_logo">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_logo"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/contont_background"></RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_dateils"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_logo"
+            android:layout_marginLeft="91dp"
+            android:layout_marginTop="31dp">
+
+            <ImageView
+                android:id="@+id/iv_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/chanpinxq" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_details"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:text="儿童趣味数学"
+                android:textSize="26sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="83dp"
+            android:layout_marginTop="115dp"
+            android:layout_toRightOf="@id/layout_dateils">
+
+            <RelativeLayout
+                android:id="@+id/layout_classify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_classify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分类: "
+                    android:textColor="#5772fd"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_provider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_classify"
+                    android:layout_marginTop="13dp"
+                    android:text="提供商: "
+                    android:textColor="#5772fd"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_classify"
+                    android:text="一年级"
+                    android:textColor="#f0f0f0"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_classify"
+                    android:layout_marginTop="13dp"
+                    android:layout_toRightOf="@id/tv_provider"
+                    android:text="新东方教育平台"
+                    android:textColor="#f0f0f0"
+                    android:textSize="22sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="98dp"
+                android:layout_toRightOf="@id/layout_classify">
+
+                <TextView
+                    android:id="@+id/tv_longtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时长: "
+                    android:textColor="#5772fd"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_longtime"
+                    android:layout_marginTop="13dp"
+                    android:text="发布时间: "
+                    android:textColor="#5772fd"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_longtime"
+                    android:text="10:36"
+                    android:textColor="#f0f0f0"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_longtime"
+                    android:layout_marginTop="13dp"
+                    android:layout_toRightOf="@id/tv_time"
+                    android:text="17-2-20"
+                    android:textColor="#f0f0f0"
+                    android:textSize="22sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_classify"
+                android:layout_marginTop="20dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_contentsynopsls"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="内容简介"
+                        android:textColor="#ccffffff"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/tv_synopslscontent"
+                        android:layout_width="600dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_contentsynopsls"
+                        android:layout_marginTop="10dp"
+                        android:ellipsize="end"
+                        android:lineSpacingExtra="5dp"
+                        android:maxLines="2"
+                        android:text="本课程有几个特点: 设置及系统化、趣味化、生活化于一体，让学生在动脑的过程中，构建数学概念，激发学习兴趣培养思维能力"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btn_play"
+                        android:layout_width="160dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/tv_synopslscontent"
+                        android:background="@drawable/play_2"
+                        android:focusableInTouchMode="true" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_top"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_contenttitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:text="相关类容:"
+            android:textColor="#fefefe"
+            android:textSize="24sp" />
+
+        <com.vunke.education.view.TvFocusGridView3
+            android:id="@+id/gr_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_contenttitle"
+            android:layout_marginLeft="52dp"
+            android:layout_marginRight="45dp"
+            android:horizontalSpacing="20dp"
+            android:nextFocusUp="@id/btn_play"
+            android:numColumns="8">
+
+        </com.vunke.education.view.TvFocusGridView3>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

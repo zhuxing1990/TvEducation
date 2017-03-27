@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_background"
+    android:background="@drawable/layout_background"
     android:fitsSystemWindows="true"
     tools:context="com.vunke.education.activity.TvVideoListActivity">
 
@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="20dp"
         android:paddingTop="30dp">
 
         <TextView
@@ -21,70 +20,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="72dp"
-            android:text="@string/alleducation"
+            android:text="@string/edication_video"
             android:textColor="@color/color_text_white4"
             android:textSize="36sp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/videolist_cplist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/videolist_title"
-        android:layout_marginLeft="72dp">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.vunke.education.view.KuangTextView
-                    android:id="@+id/videolist_bestv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:text="@string/bestv"
-                    android:textSize="28sp" />
-
-                <com.vunke.education.view.KuangTextView
-                    android:id="@+id/videolist_aitewei"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/videolist_bestv"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:text="@string/aitewei"
-                    android:textSize="28sp" />
-
-                <com.vunke.education.view.KuangTextView
-                    android:id="@+id/videolist_xdf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/videolist_aitewei"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:text="@string/xdf"
-                    android:textSize="28sp" />
-            </RelativeLayout>
-        </HorizontalScrollView>
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/videolist_learninglist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/videolist_title"
         android:layout_marginLeft="20dp"
-        android:layout_below="@+id/videolist_cplist">
+        android:layout_marginTop="60dp">
 
         <RelativeLayout
             android:id="@+id/videolist_schoollist"
-            android:layout_width="120dp"
-            android:layout_height="match_parent">
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background_blue1">
 
             <ScrollView
                 android:id="@+id/videolist_school_scroll"
@@ -93,94 +47,133 @@
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content">
 
-                    <TextView
+                    <com.vunke.education.view.KuangRelativeLayout
                         android:id="@+id/videolist_primary_school"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60dp"
-                        android:gravity="center"
-                        android:text="@string/primary_school"
-                        android:layout_centerHorizontal="true"
-                        android:textColor="@color/color_text_white5"
-                        android:textSize="28sp" />
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="@string/primary_school"
+                            android:textColor="@color/color_text_white5"
+                            android:textSize="28sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
                         android:id="@+id/videolist_junior_middle_school"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:gravity="center"
-                        android:layout_below="@+id/videolist_primary_school"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/junior_middle_school"
-                        android:textColor="@color/color_text_white5"
-                        android:textSize="28sp" />
+                        android:layout_below="@+id/videolist_primary_school">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/junior_middle_school"
+                            android:textColor="@color/color_text_white5"
+                            android:textSize="28sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
                         android:id="@+id/videolist_high_school"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:gravity="center"
-                        android:layout_below="@+id/videolist_junior_middle_school"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/high_school"
-                        android:textColor="@color/color_text_white5"
-                        android:textSize="28sp" />
+                        android:layout_below="@+id/videolist_junior_middle_school">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/high_school"
+                            android:textColor="@color/color_text_white5"
+                            android:textSize="28sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
                         android:id="@+id/videolist_foreign_language_study"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:gravity="center"
-                        android:layout_below="@+id/videolist_high_school"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/foreign_language_study"
-                        android:textColor="@color/color_text_white5"
-                        android:textSize="28sp" />
+                        android:layout_below="@+id/videolist_high_school">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/foreign_language_study"
+                            android:textColor="@color/color_text_white5"
+                            android:textSize="28sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
                         android:id="@+id/videolist_equivalency_exam"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:gravity="center"
-                        android:layout_below="@+id/videolist_foreign_language_study"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/equivalency_exam"
-                        android:textColor="@color/color_text_white5"
-                        android:textSize="28sp" />
+                        android:layout_below="@+id/videolist_foreign_language_study">
 
-                    <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/equivalency_exam"
+                            android:textColor="@color/color_text_white5"
+                            android:textSize="28sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
                         android:id="@+id/videolist_open_class"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:gravity="center"
                         android:layout_below="@+id/videolist_equivalency_exam"
-                        android:layout_centerHorizontal="true"
-                        android:text="@string/open_class"
-                        android:textColor="@color/color_text_white5"
-                        android:textSize="28sp" />
+                        android:layout_centerHorizontal="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/open_class"
+                            android:textColor="@color/color_text_white5"
+                            android:textSize="28sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+
                 </RelativeLayout>
             </ScrollView>
+
             <RelativeLayout
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/videolist_school_scroll">
+                android:layout_alignParentBottom="true"
+                android:padding="10dp">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/down"/>
+                    android:src="@drawable/down" />
             </RelativeLayout>
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/videolist_gradelist"
-            android:layout_width="120dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/videolist_schoollist">
+            android:layout_toRightOf="@+id/videolist_schoollist"
+            android:background="@color/color_background_blue2">
 
             <ScrollView
+                android:id="@+id/videwlist_grade"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -188,8 +181,201 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
+                    <com.vunke.education.view.KuangRelativeLayout
+                        android:id="@+id/gradelist_one_grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/one_grade"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
+                        android:id="@+id/gradelist_two_grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/gradelist_one_grade">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/two_grade"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
+                        android:id="@+id/gradelist_three_grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/gradelist_two_grade">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/three_grade"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
+                        android:id="@+id/gradelist_four_grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/gradelist_three_grade">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/four_grade"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
+                        android:id="@+id/gradelist_five_grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/gradelist_four_grade">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/five_grade"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
+
+                    <com.vunke.education.view.KuangRelativeLayout
+                        android:id="@+id/gradelist_six_grade"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/gradelist_five_grade">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:maxLines="1"
+                            android:text="@string/six_grade"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp" />
+                    </com.vunke.education.view.KuangRelativeLayout>
                 </RelativeLayout>
             </ScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/videolist_allvideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/videolist_title"
+        android:layout_toRightOf="@+id/videolist_learninglist">
+
+        <RelativeLayout
+            android:id="@+id/videolist_cplist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.vunke.education.view.KuangTextView
+                        android:id="@+id/videolist_bestv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:maxLines="1"
+                        android:padding="20dp"
+                        android:text="@string/bestv"
+                        android:textSize="28sp" />
+
+                    <com.vunke.education.view.KuangTextView
+                        android:id="@+id/videolist_aitewei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/videolist_bestv"
+                        android:maxLines="1"
+                        android:padding="20dp"
+                        android:text="@string/aitewei"
+                        android:textSize="28sp" />
+
+                    <com.vunke.education.view.KuangTextView
+                        android:id="@+id/videolist_xdf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/videolist_aitewei"
+                        android:maxLines="1"
+                        android:padding="20dp"
+                        android:text="@string/xdf"
+                        android:textSize="28sp" />
+                    <com.vunke.education.view.KuangTextView
+                        android:id="@+id/videolist_bestv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/videolist_xdf"
+                        android:focusable="true"
+                        android:maxLines="1"
+                        android:padding="20dp"
+                        android:text="@string/bestv"
+                        android:textSize="28sp" />
+
+                    <com.vunke.education.view.KuangTextView
+                        android:id="@+id/videolist_aitewei2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/videolist_bestv2"
+                        android:maxLines="1"
+                        android:padding="20dp"
+                        android:text="@string/aitewei"
+                        android:textSize="28sp" />
+
+                    <com.vunke.education.view.KuangTextView
+                        android:id="@+id/videolist_xdf2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/videolist_aitewei2"
+                        android:maxLines="1"
+                        android:padding="20dp"
+                        android:text="@string/xdf"
+                        android:textSize="28sp" />
+                </RelativeLayout>
+            </HorizontalScrollView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/videolist_cplist"
+            android:paddingLeft="30dp"
+            android:paddingTop="20dp">
+
+            <com.vunke.education.view.TvFocusGridView
+                android:id="@+id/videolist_gridview"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

@@ -13,19 +13,19 @@ import com.vunke.education.R;
 /**
  * Created by zhuxi on 2017/3/24.
  */
-public class KuangTextView extends TextView {
+public class KuangTextView2 extends TextView {
 
-    public KuangTextView(Context context) {
+    public KuangTextView2(Context context) {
         super(context);
         init();
     }
 
-    public KuangTextView(Context context, AttributeSet attrs) {
+    public KuangTextView2(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public KuangTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public KuangTextView2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -53,7 +53,7 @@ public class KuangTextView extends TextView {
     private Animation scaleBigAnimation;
     private void zoomIn() {
         if (scaleSmallAnimation == null) {
-            scaleSmallAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_scale_small2);
+            scaleSmallAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_scale_small3);
         }
         startAnimation(scaleSmallAnimation);
 
@@ -62,7 +62,7 @@ public class KuangTextView extends TextView {
     private void zoomOut() {
 
         if (scaleBigAnimation == null) {
-            scaleBigAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_scale_big2);
+            scaleBigAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.anim_scale_big3);
         }
         startAnimation(scaleBigAnimation);
     }

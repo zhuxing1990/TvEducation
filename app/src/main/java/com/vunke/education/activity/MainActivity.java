@@ -1,13 +1,15 @@
 package com.vunke.education.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 
 import com.vunke.education.R;
+import com.vunke.education.base.BaseActivity;
+import com.vunke.education.base.Configs;
 import com.vunke.education.view.KuangRelativeLayout;
 
 import java.util.Random;
@@ -19,12 +21,12 @@ import io.vov.vitamio.widget.VideoView;
 /**
  * Created by zhuxi on 2017/3/22.
  */
-public class MainActivity extends AppCompatActivity  implements View.OnKeyListener{
+public class MainActivity extends BaseActivity implements View.OnKeyListener,View.OnClickListener{
     private String [] video ={
             "http://movie.ks.js.cn/flv/other/1_0.mp4"
     };
 
-    String url = "http://live.hcs.cmvideo.cn:8088/wd-hunanhd-1200/index.m3u8?msisdn=3000000000000&mdspid=&spid=699017&netType=5&sid=2201064496&pid=2028595851&timestamp=20170324142437&Channel_ID=0116_22300109-91000-20300&ProgramID=603996975&ParentNodeID=-99&preview=1&playseek=000000-000600&client_ip=123.206.208.186&assertID=2201064496&SecurityKey=20170324142437&encrypt=3adb2bfc2f9dfe44c116f76842300192";
+    String url = "http://live.hcs.cmvideo.cn:8088/wd-hunanhd-1200/01.m3u8?msisdn=3000000000000&mdspid=&spid=699017&netType=5&sid=2201064496&pid=2028595851&timestamp=20170327111900&Channel_ID=0116_22300109-91000-20300&ProgramID=603996975&ParentNodeID=-99&preview=1&playseek=000000-000600&client_ip=123.206.208.186&assertID=2201064496&SecurityKey=20170327111900&mtv_session=cebd4400b57b1ed403b5f6c4704107b4&HlsSubType=1&HlsProfileId=1&encrypt=7e242fdb1db7a9a66d83221440f09cee";
 //    private TextView main_broadcas_text;
 //
     private KuangRelativeLayout main_relative_view1;
@@ -33,8 +35,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnKeyListen
 //    private KuangRelativeLayout main_relative_view4;
 //    private KuangRelativeLayout main_relative_view5;
 //    private KuangRelativeLayout main_relative_view6;
-//    private KuangRelativeLayout main_relative_watch_history;
-//    private KuangRelativeLayout main_relative_ranking_list;
+    private KuangRelativeLayout main_relative_watch_history;
+    private KuangRelativeLayout main_relative_ranking_list;
 //    private KuangRelativeLayout main_ralative_small_view1;
 //    private KuangRelativeLayout main_ralative_small_view2;
 //    private KuangRelativeLayout main_ralative_small_view3;
@@ -103,13 +105,15 @@ public class MainActivity extends AppCompatActivity  implements View.OnKeyListen
         path=video[new Random().nextInt(video.length)];
         path = url;
     //播放文件路径
-        videoView.setVideoPath(path);
+//        videoView.setVideoPath(path);
+        videoView.setVideoURI(Uri.parse(url));
 //        videoView.setForegroundTintMode();
 
 //        videoView.setMediaController(new MediaController(this));
         videoView.setMediaController(null);
         videoView.setVideoLayout(mLayout, 0);
         videoView.requestFocus();
+        videoView.setOnKeyListener(this);
     //准备播放器
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -130,22 +134,17 @@ public class MainActivity extends AppCompatActivity  implements View.OnKeyListen
 
     private void initView() {
         main_relative_view1 = (KuangRelativeLayout) findViewById(R.id.main_relative_view1);
-        main_relative_view1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,TV_VideoView.class);
-                startActivity(intent);
-            }
-        });
+        main_relative_view1.setOnClickListener(this);
 //        main_relative_view2 = (KuangRelativeLayout) findViewById(R.id.main_relative_view2);
 //        main_relative_view3 = (KuangRelativeLayout) findViewById(R.id.main_relative_view3);
 //        main_relative_view4 = (KuangRelativeLayout) findViewById(R.id.main_relative_view4);
 //        main_relative_view5 = (KuangRelativeLayout) findViewById(R.id.main_relative_view5);
 //        main_relative_view6 = (KuangRelativeLayout) findViewById(R.id.main_relative_view6);
 //
-//        main_relative_watch_history = (KuangRelativeLayout) findViewById(R.id.main_relative_watch_history);
-//        main_relative_ranking_list = (KuangRelativeLayout) findViewById(R.id.main_relative_ranking_list);
-//
+        main_relative_watch_history = (KuangRelativeLayout) findViewById(R.id.main_relative_watch_history);
+        main_relative_watch_history.setOnClickListener(this);
+        main_relative_ranking_list = (KuangRelativeLayout) findViewById(R.id.main_relative_ranking_list);
+        main_relative_ranking_list.setOnClickListener(this);
 //        main_ralative_small_view1 = (KuangRelativeLayout) findViewById(R.id.main_ralative_small_view1);
 //        main_ralative_small_view2 = (KuangRelativeLayout) findViewById(R.id.main_ralative_small_view2);
 //        main_ralative_small_view3 = (KuangRelativeLayout) findViewById(R.id.main_ralative_small_view3);
@@ -206,8 +205,37 @@ public class MainActivity extends AppCompatActivity  implements View.OnKeyListen
 //    }
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
+        switch (v.getId()){
+            case R.id.main_videoView:
+                if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT){
+                    main_relative_view1.requestFocus();
+                    return  true;
+                }
+                break;
+            default:
+                break;
+        }
         return false;
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.main_relative_view1:
+                Configs.intent = new Intent(MainActivity.this,TvVideoListActivity.class);
+                startActivity(Configs.intent);
+                break;
+            case R.id.main_relative_watch_history:
+                Configs.intent = new Intent(MainActivity.this,WatchHistoryActivity.class);
+                startActivity(Configs.intent);
+                break;
+            case R.id.main_relative_ranking_list:
+                Configs.intent = new Intent(MainActivity.this,RankingsActivity.class);
+                startActivity(Configs.intent);
+                break;
+            default:
+                break;
+        }
+    }
 }

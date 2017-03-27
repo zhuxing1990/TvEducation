@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/listview_itmen_watchhistory_rl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/watchhistory_recently"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recently"
+            android:textSize="30sp"
+            android:textColor="@color/color_text_white10"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_toRightOf="@+id/watchhistory_recently"
+            android:background="@color/color_background_wathet"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/listview_itmen_watchhistory_rl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listview_itmen_watchhistory_rl1">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/listview_watchistory_videoimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/chanping"/>
+                <ImageView
+                    android:id="@+id/listview_watchistory_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/tv"
+                    android:layout_below="@+id/listview_watchistory_videoimg"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="@string/look_to"
+                    android:layout_toRightOf="@+id/listview_watchistory_tv"
+                    android:layout_below="@+id/listview_watchistory_videoimg"
+                    android:textColor="@color/color_text_white11"/>
+            </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

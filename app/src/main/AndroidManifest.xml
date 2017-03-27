@@ -32,13 +32,16 @@
             android:name="io.vov.vitamio.activity.InitActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTop"
-            android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activity.TV_VideoView" />
         <activity
-            android:name=".activity.TvVideoListActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
+            android:name=".activity.TvVideoListActivity">
+        </activity>
+        <activity android:name=".activity.VideodetailsActivity">
+        </activity>
+        <activity android:name=".activity.RankingsActivity">
+        </activity>
+        <activity android:name=".activity.WatchHistoryActivity">
         </activity>
     </application>
 

@@ -3,19 +3,32 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <color name="color_text_white">#99FFFFFF</color>
     <color name="color_text_white2">#F0F0F0</color>
     <color name="color_text_white3">#B3FFFFFF</color>
     <color name="color_text_white4">#C5CFFF </color>
     <color name="color_text_white5">#B3EFEFEF </color>
+    <color name="color_text_white7">#CCFAFAFC</color>
+    <color name="color_text_white8">#99FAFAFC</color>
+    <color name="color_text_white9">#99BEC8F6</color>
+    <color name="color_text_white10">#C6DEFF</color>
+    <color name="color_text_white11">#7594E2</color>
+
+    <color name="color_background_wathet">#364FBC</color>
     <color name="color_brown">#E99A33</color>
-    <color name="color_turquoise">#79c849</color>
+    <color name="color_turquoise">#79C849</color>
+    <color name="color_background_blue1">#1639B9</color>
+    <color name="color_background_blue2">#325EB9</color>
+
+    <color name="color_background_black_transparent">#30000E07</color>
+    
     <color name="background_gradient_start">#000000</color>
     <color name="background_gradient_end">#DDDDDD</color>
-    <color name="fastlane_background">#0096a6</color>
-    <color name="search_opaque">#ffaa3f</color>
-    <color name="selected_background">#ffaa3f</color>
-    <color name="detail_background">#0096a6</color>
+    <color name="fastlane_background">#0096A6</color>
+    <color name="search_opaque">#FFAA3f</color>
+    <color name="selected_background">#FFAA3f</color>
+    <color name="detail_background">#0096A6</color>
     <color name="soft_opaque">#30000000</color>
     <color name="img_soft_opaque">#30FF0000</color>
     <color name="img_full_opaque">#00000000</color>
@@ -25,5 +38,6 @@
     <color name="orange_transparent">#AAFADCA7</color>
     <color name="orange">#FADCA7</color>
     <color name="yellow">#EEFF41</color>
-    <color name="default_background">#3d3d3d</color>
+    <color name="default_background">#3D3D3D</color>
+
 </resources>

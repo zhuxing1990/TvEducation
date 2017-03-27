@@ -8,5 +8,5 @@
     <item type="drawable" name="transparent_background_progress">#ff949494</item>
     <item type="drawable" name="item_normal">#ff343434</item>
     <item type="drawable" name="item_press">#ff2c2c2c</item>
-
+    <item type="drawable" name="item_background_blue1">#325EB9</item>
 </resources>

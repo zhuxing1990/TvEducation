@@ -16,7 +16,7 @@ import com.vunke.education.R;
  * Created by zhuxi on 2017/3/23.
  */
 @SuppressLint("NewApi")
-public class KuangRelativeLayout extends RelativeLayout {
+public class KuangRelativeLayout2 extends RelativeLayout {
     private static final String TAG = "KuangLinearLayout";
     private Rect mBound;
     private Drawable mDrawable;
@@ -24,17 +24,17 @@ public class KuangRelativeLayout extends RelativeLayout {
 
 
 
-    public KuangRelativeLayout(Context context) {
+    public KuangRelativeLayout2(Context context) {
         super(context);
         init();
     }
 
-    public KuangRelativeLayout(Context context, AttributeSet attrs) {
+    public KuangRelativeLayout2(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public KuangRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public KuangRelativeLayout2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -66,7 +66,7 @@ public class KuangRelativeLayout extends RelativeLayout {
 //            Log.d(TAG, "draw: focus true");
             super.getDrawingRect(mRect);
 //            Log.d(TAG, "onDraw: "+"left"+mRect.left+""+"top"+mRect.top+"right"+mRect.right+"bottom"+mRect.bottom);
-            mBound.set(mRect.left-3, mRect.top-3,mRect.right+3,mRect.bottom+3);
+            mBound.set(mRect.left-3, mRect.top-8,mRect.right+3,mRect.bottom+8);
             mDrawable.setBounds(mBound);
             canvas.save();
             mDrawable.draw(canvas);
