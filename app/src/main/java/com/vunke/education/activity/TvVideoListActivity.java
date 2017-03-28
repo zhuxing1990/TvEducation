@@ -54,7 +54,7 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
     private void initData() {
 
         videoList = new ArrayList<>();
-
+        // 通过RX 异步更新数据
         subscribe = Observable.unsafeCreate(new Observable.OnSubscribe<List<VideoListBean>>() {
             @Override
             public void call(Subscriber<? super List<VideoListBean>> subscriber) {
