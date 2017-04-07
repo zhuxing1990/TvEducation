@@ -35,4 +35,6 @@
     <string name="recently">最近</string>
     <string name="look_to">观看至</string>
     <string name="today">今天</string>
+    <string name="play">播放</string>
+    <string name="pause">暂停</string>
 </resources>

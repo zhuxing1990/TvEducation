@@ -24,7 +24,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:design:25.1.0'
-    compile project(':InitActivity')
     //OkhttpUtils
     compile 'com.lzy.net:okgo:+'
     //OKhttp rx
@@ -43,5 +42,4 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     // gson
     compile 'com.google.code.gson:gson:2.8.0'
-
 }

@@ -6,7 +6,7 @@
 
     <color name="color_text_white">#99FFFFFF</color>
     <color name="color_text_white2">#F0F0F0</color>
-    <color name="color_text_white3">#B3FFFFFF</color>
+    <color name="color_text_white3">#80FFFFFF</color>
     <color name="color_text_white4">#C5CFFF </color>
     <color name="color_text_white5">#B3EFEFEF </color>
     <color name="color_text_white7">#CCFAFAFC</color>
@@ -20,6 +20,7 @@
     <color name="color_turquoise">#79C849</color>
     <color name="color_background_blue1">#1639B9</color>
     <color name="color_background_blue2">#325EB9</color>
+    <color name="color_background_blue3">#071965</color>
 
     <color name="color_background_black_transparent">#30000E07</color>
     
@@ -39,5 +40,5 @@
     <color name="orange">#FADCA7</color>
     <color name="yellow">#EEFF41</color>
     <color name="default_background">#3D3D3D</color>
-
+    <color name="transparent">#00000000</color>
 </resources>

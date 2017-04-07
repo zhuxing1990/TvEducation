@@ -62,12 +62,10 @@
             android:layout_height="282dp"
             android:layout_marginTop="5dp"
             android:id="@+id/main_surfaceview">
-             <io.vov.vitamio.widget.VideoView
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:id="@+id/main_videoView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <SurfaceView
+                android:id="@+id/main_surfaceView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </RelativeLayout>
 
         <com.vunke.education.view.KuangRelativeLayout
@@ -206,17 +204,17 @@
                 <com.vunke.education.view.RoundAngleImageView
                     android:layout_width="66dp"
                     android:layout_height="59dp"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/watch_history" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_alignParentBottom="true"
-                    android:gravity="right"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
+                    android:paddingBottom="12dp"
                     android:text="@string/watch_history"
                     android:textColor="@color/color_text_white2"
                     android:textSize="22sp" />
@@ -242,17 +240,17 @@
                 <com.vunke.education.view.RoundAngleImageView
                     android:layout_width="66dp"
                     android:layout_height="59dp"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/ranking_list" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_alignParentBottom="true"
-                    android:gravity="right"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="10dp"
+                    android:paddingBottom="12dp"
                     android:text="@string/ranking_list"
                     android:textColor="@color/color_text_white2"
                     android:textSize="22sp" />
@@ -277,12 +275,13 @@
                     android:id="@+id/main_small_view1"
                     android:layout_width="74dp"
                     android:layout_height="74dp"
-                    android:layout_centerInParent="true"
-                    />
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="5dp"
                     android:text="@string/children_education_graphics"
                     android:textColor="@color/color_text_white2"
                     android:singleLine="true"
@@ -304,8 +303,8 @@
                     android:id="@+id/main_small_view2"
                     android:layout_width="74dp"
                     android:layout_height="74dp"
-                    android:layout_centerInParent="true"
-                    />
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -314,6 +313,7 @@
                     android:textColor="@color/color_text_white2"
                     android:layout_alignParentBottom="true"
                     android:singleLine="true"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18sp"/>
             </com.vunke.education.view.KuangRelativeLayout>
         </RelativeLayout>
@@ -336,8 +336,8 @@
                     android:id="@+id/main_small_view3"
                     android:layout_width="74dp"
                     android:layout_height="74dp"
-                    android:layout_centerInParent="true"
-                   />
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -346,6 +346,7 @@
                     android:textColor="@color/color_text_white2"
                     android:singleLine="true"
                     android:textSize="18sp"
+                    android:layout_marginBottom="5dp"
                     />
             </com.vunke.education.view.KuangRelativeLayout>
 
@@ -360,8 +361,9 @@
                     android:id="@+id/main_small_view4"
                     android:layout_width="74dp"
                     android:layout_height="74dp"
-                    android:layout_centerInParent="true"
-                    />
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -370,6 +372,7 @@
                     android:textColor="@color/color_text_white2"
                     android:layout_alignParentBottom="true"
                     android:singleLine="true"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18sp"/>
             </com.vunke.education.view.KuangRelativeLayout>
         </RelativeLayout>
@@ -385,7 +388,7 @@
                 android:paddingLeft="12dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-               android:layout_centerInParent="true"
+                android:layout_centerInParent="true"
                 android:id="@+id/main_ordering">
                 <com.vunke.education.view.RoundAngleImageView
                     android:layout_width="160dp"

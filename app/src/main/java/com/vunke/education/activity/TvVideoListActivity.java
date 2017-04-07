@@ -3,7 +3,6 @@ package com.vunke.education.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +13,7 @@ import com.vunke.education.adapter.TvVideoListAdapter;
 import com.vunke.education.base.BaseActivity;
 import com.vunke.education.base.Configs;
 import com.vunke.education.model.VideoListBean;
-import com.vunke.education.view.KuangRelativeLayout;
+import com.vunke.education.view.KuangRelativeLayout3;
 import com.vunke.education.view.KuangTextView;
 import com.vunke.education.view.TvFocusGridView;
 
@@ -36,7 +35,7 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
     private KuangTextView videolist_xdf;
     private boolean isFirst_catalog = false;
     private ScrollView videolist_school_scroll;
-    private KuangRelativeLayout videolist_primary_school;
+    private KuangRelativeLayout3 videolist_primary_school;
     private VideoListBean videoListBean;
     private List<VideoListBean> videoList;
     private Subscription subscribe;
@@ -48,7 +47,6 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
         initView();
         initListener();
         initData();
-        ininGridView();
     }
 
     private void initData() {
@@ -58,7 +56,7 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
         subscribe = Observable.unsafeCreate(new Observable.OnSubscribe<List<VideoListBean>>() {
             @Override
             public void call(Subscriber<? super List<VideoListBean>> subscriber) {
-                for (int i = 0; i < 50; i++) {
+                for (int i = 0; i < 21; i++) {
                     videoListBean = new VideoListBean();
                     videoListBean.setVideoDrawable(getResources().getDrawable(R.drawable.videolist_gridview_item_img));
                     videoListBean.setVideoImgPath("");
@@ -75,21 +73,21 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
                 .subscribe(new Observer<List<VideoListBean>>() {
                     @Override
                     public void onCompleted() {
-                        videolist_gridview.setNumColumns(4);//设置girdView列数  1行6列
-                        videolist_gridview.setGravity(Gravity.CENTER);// 位置居中
+                        videolist_gridview.setNumColumns(4);//设置girdView列数  1行4列
+//                        videolist_gridview.setGravity(Gravity.CENTER);// 位置居中
 //                        videolist_gridview.setVerticalSpacing(12);// 垂直间隔
                         // gridView.setHorizontalSpacing(8);// 水平间隔
-//                        videolist_gridview.setStretchMode(GridView);
+
                         videolist_gridview.setClipToPadding(false);//  是否允许ViewGroup在padding中绘制     具体解释:http://www.tuicool.com/articles/m6N36zQ
                         videolist_gridview.setSelected(true);//支持选择
                         videolist_gridview.setSelection(0);// 选择当前下标为 0  第一个
                         videolist_gridview.setSelector(android.R.color.transparent);//设置选中后的透明效果
-                        videolist_gridview.setMySelector(R.drawable.kuang2);//设置选中后的边框
+                        videolist_gridview.setMySelector(R.drawable.kuang3);//设置选中后的边框
                         videolist_gridview.setMyScaleValues(1.1f, 1.1f);//设置选中后 默认扩大倍数
                         videolist_gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Configs.intent = new Intent(TvVideoListActivity.this,VideodetailsActivity.class);
+                                Configs.intent = new Intent(mcontext,VideoDetailsActivity.class);
                                 startActivity(Configs.intent);
                             }
                         });
@@ -127,12 +125,8 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
         videolist_bestv = (KuangTextView) findViewById(R.id.videolist_bestv);
         videolist_aitewei = (KuangTextView) findViewById(R.id.videolist_aitewei);
         videolist_xdf = (KuangTextView) findViewById(R.id.videolist_xdf);
-        videolist_primary_school = (KuangRelativeLayout) findViewById(R.id.videolist_primary_school);
+        videolist_primary_school = (KuangRelativeLayout3) findViewById(R.id.videolist_primary_school);
         videolist_gridview = (TvFocusGridView) findViewById(R.id.videolist_gridview);
-
-    }
-
-    private void ininGridView() {
 
     }
 
@@ -193,7 +187,7 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (subscribe.isUnsubscribed()){
+        if (!subscribe.isUnsubscribed()){
             subscribe.unsubscribe();
             subscribe=null;
         }

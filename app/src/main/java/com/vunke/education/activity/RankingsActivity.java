@@ -40,7 +40,7 @@ public class RankingsActivity extends BaseActivity {
 		greadView.setAdapter(adapter);
 		greadView.setClipToPadding(false);//  是否允许ViewGroup在padding中绘制     具体解释:http://www.tuicool.com/articles/m6N36zQ
 		greadView.setSelected(true);//支持选择
-		greadView.setSelection(0);// 选择当前下标为 0  第一个/
+		greadView.setSelection(1);// 选择当前下标为 0  第一个/
 
 //		View findViewByIds1 = currentFocus.findViewById(R.id.rankings_item);
 //		findViewByIds1.setBackgroundResource(R.drawable.bg_border1);
@@ -73,7 +73,7 @@ public class RankingsActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent intent = new Intent();
-				intent.setClass(RankingsActivity.this, VideodetailsActivity.class);
+				intent.setClass(RankingsActivity.this, VideoDetailsActivity.class);
 				startActivity(intent);
 			}
 		});

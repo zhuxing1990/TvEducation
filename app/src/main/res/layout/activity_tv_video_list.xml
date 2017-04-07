@@ -38,7 +38,7 @@
             android:id="@+id/videolist_schoollist"
             android:layout_width="140dp"
             android:layout_height="match_parent"
-            android:background="@color/color_background_blue1">
+            android:background="@color/color_background_blue3">
 
             <ScrollView
                 android:id="@+id/videolist_school_scroll"
@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/videolist_primary_school"
                         android:layout_width="match_parent"
                         android:layout_height="60dp">
@@ -63,9 +63,9 @@
                             android:text="@string/primary_school"
                             android:textColor="@color/color_text_white5"
                             android:textSize="28sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/videolist_junior_middle_school"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -79,9 +79,9 @@
                             android:text="@string/junior_middle_school"
                             android:textColor="@color/color_text_white5"
                             android:textSize="28sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/videolist_high_school"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -95,9 +95,9 @@
                             android:text="@string/high_school"
                             android:textColor="@color/color_text_white5"
                             android:textSize="28sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/videolist_foreign_language_study"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -111,9 +111,9 @@
                             android:text="@string/foreign_language_study"
                             android:textColor="@color/color_text_white5"
                             android:textSize="28sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/videolist_equivalency_exam"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -127,9 +127,9 @@
                             android:text="@string/equivalency_exam"
                             android:textColor="@color/color_text_white5"
                             android:textSize="28sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/videolist_open_class"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -144,7 +144,7 @@
                             android:text="@string/open_class"
                             android:textColor="@color/color_text_white5"
                             android:textSize="28sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
 
                 </RelativeLayout>
@@ -181,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/gradelist_one_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp">
@@ -194,9 +194,9 @@
                             android:text="@string/one_grade"
                             android:textColor="@android:color/white"
                             android:textSize="24sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/gradelist_two_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -210,9 +210,9 @@
                             android:text="@string/two_grade"
                             android:textColor="@android:color/white"
                             android:textSize="24sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/gradelist_three_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -226,9 +226,9 @@
                             android:text="@string/three_grade"
                             android:textColor="@android:color/white"
                             android:textSize="24sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/gradelist_four_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -242,9 +242,9 @@
                             android:text="@string/four_grade"
                             android:textColor="@android:color/white"
                             android:textSize="24sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/gradelist_five_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -258,9 +258,9 @@
                             android:text="@string/five_grade"
                             android:textColor="@android:color/white"
                             android:textSize="24sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
 
-                    <com.vunke.education.view.KuangRelativeLayout
+                    <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/gradelist_six_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -274,7 +274,7 @@
                             android:text="@string/six_grade"
                             android:textColor="@android:color/white"
                             android:textSize="24sp" />
-                    </com.vunke.education.view.KuangRelativeLayout>
+                    </com.vunke.education.view.KuangRelativeLayout3>
                 </RelativeLayout>
             </ScrollView>
         </RelativeLayout>
@@ -373,9 +373,9 @@
 
             <com.vunke.education.view.TvFocusGridView
                 android:id="@+id/videolist_gridview"
-
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
         </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

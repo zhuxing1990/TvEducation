@@ -7,4 +7,5 @@ import android.content.Intent;
  */
 public class Configs {
     public static Intent intent = null;// 意图
+
 }

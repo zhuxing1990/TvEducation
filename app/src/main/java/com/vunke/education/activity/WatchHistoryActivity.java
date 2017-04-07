@@ -11,7 +11,7 @@ import com.vunke.education.view.KuangRelativeLayout2;
 /**
  * Created by zhuxi on 2017/3/25.
  */
-public class WatchHistoryActivity extends BaseActivity implements View.OnClickListener,View.OnKeyListener {
+public class WatchHistoryActivity extends BaseActivity implements View.OnClickListener, View.OnKeyListener {
     private KuangRelativeLayout2 wh_recentlylist_rl1;
     private KuangRelativeLayout2 wh_recentlylist_rl2;
     private KuangRelativeLayout2 wh_recentlylist_rl3;
@@ -20,6 +20,7 @@ public class WatchHistoryActivity extends BaseActivity implements View.OnClickLi
     private KuangRelativeLayout2 wh_todaylist_rl2;
     private KuangRelativeLayout2 wh_todaylist_rl3;
     private KuangRelativeLayout2 wh_todaylist_rl4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,7 @@ public class WatchHistoryActivity extends BaseActivity implements View.OnClickLi
 
 
     }
+
     @Override
     public void onClick(View v) {
 
@@ -76,7 +78,7 @@ public class WatchHistoryActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
-        switch (v.getId()){
+        switch (v.getId()) {
 //            KEYCODE_DPAD_UP=19;
 //
 //            KEYCODE_DPAD_DOWN=20;
@@ -86,51 +88,67 @@ public class WatchHistoryActivity extends BaseActivity implements View.OnClickLi
 //            KEYCODE_DPAD_RIGHT=22;
 
             case R.id.wh_todaylist_rl1:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_UP){
-                    wh_recentlylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+                        wh_recentlylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
             case R.id.wh_todaylist_rl2:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_UP){
-                    wh_recentlylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+                        wh_recentlylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
             case R.id.wh_todaylist_rl3:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_UP){
-                    wh_recentlylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+                        wh_recentlylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
             case R.id.wh_todaylist_rl4:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_UP){
-                    wh_recentlylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
+                        wh_recentlylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
             case R.id.wh_recentlylist_rl1:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN){
-                    wh_todaylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                        wh_todaylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
             case R.id.wh_recentlylist_rl2:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN){
-                    wh_todaylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                        wh_todaylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
             case R.id.wh_recentlylist_rl3:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN){
-                    wh_todaylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                        wh_todaylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
             case R.id.wh_recentlylist_rl4:
-                if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN){
-                    wh_todaylist_rl1.requestFocus();
-                    return true;
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                        wh_todaylist_rl1.requestFocus();
+                        return true;
+                    }
                 }
                 break;
 

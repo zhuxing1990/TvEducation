@@ -16,7 +16,7 @@ import com.vunke.education.R;
  * Created by zhuxi on 2017/3/23.
  */
 @SuppressLint("NewApi")
-public class KuangRelativeLayout2 extends RelativeLayout {
+public class KuangRelativeLayout3 extends RelativeLayout {
     private static final String TAG = "KuangLinearLayout";
     private Rect mBound;
     private Drawable mDrawable;
@@ -24,17 +24,17 @@ public class KuangRelativeLayout2 extends RelativeLayout {
 
 
 
-    public KuangRelativeLayout2(Context context) {
+    public KuangRelativeLayout3(Context context) {
         super(context);
         init();
     }
 
-    public KuangRelativeLayout2(Context context, AttributeSet attrs) {
+    public KuangRelativeLayout3(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public KuangRelativeLayout2(Context context, AttributeSet attrs, int defStyleAttr) {
+    public KuangRelativeLayout3(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -42,7 +42,7 @@ public class KuangRelativeLayout2 extends RelativeLayout {
         setWillNotDraw(false);
         mRect = new Rect();
         mBound = new Rect();
-        mDrawable = getResources().getDrawable(R.drawable.kuang3);
+        mDrawable = getResources().getDrawable(R.drawable.textview_focusframe);
         setChildrenDrawingOrderEnabled(true);
         setClickable(true);
         setClipChildren(false);
@@ -66,7 +66,7 @@ public class KuangRelativeLayout2 extends RelativeLayout {
 //            Log.d(TAG, "draw: focus true");
             super.getDrawingRect(mRect);
 //            Log.d(TAG, "onDraw: "+"left"+mRect.left+""+"top"+mRect.top+"right"+mRect.right+"bottom"+mRect.bottom);
-            mBound.set(mRect.left-3, mRect.top-8,mRect.right+3,mRect.bottom+8);
+            mBound.set(mRect.left-3, mRect.top-3,mRect.right+3,mRect.bottom+3);
             mDrawable.setBounds(mBound);
             canvas.save();
             mDrawable.draw(canvas);

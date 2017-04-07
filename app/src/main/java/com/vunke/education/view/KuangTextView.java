@@ -40,7 +40,7 @@ public class KuangTextView extends TextView {
         super.onFocusChanged(gainFocus, direction, previouslyFocusedRect);
         if (gainFocus) {
             bringToFront();
-            setTextColor(getResources().getColor(android.R.color.white));
+            setTextColor(getResources().getColor(R.color.color_text_white2));
             getRootView().requestLayout();
             getRootView().invalidate();
             zoomOut();
