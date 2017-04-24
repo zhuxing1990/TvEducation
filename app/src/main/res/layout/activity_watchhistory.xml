@@ -3,12 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layout_background"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/watchhistory_title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:padding="20dp">
 
         <ImageView
@@ -31,6 +35,8 @@
         android:id="@+id/watchhistory_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_below="@+id/watchhistory_title1"
         android:layout_marginLeft="50dp">
 
@@ -62,16 +68,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/watchhistory_rl1"
             android:layout_marginLeft="30dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:padding="10dp">
 
             <HorizontalScrollView
                 android:id="@+id/wy_horizontalScrollView1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
 
                     <com.vunke.education.view.KuangRelativeLayout2
                         android:id="@+id/wh_recentlylist_rl1"
@@ -216,15 +228,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/watchhistory_rl2"
             android:layout_marginLeft="30dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:padding="10dp">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
 
                     <com.vunke.education.view.KuangRelativeLayout2
                         android:id="@+id/wh_todaylist_rl1"

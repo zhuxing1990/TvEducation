@@ -3,6 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:background="@drawable/layout_background">
     <RelativeLayout
         android:id="@+id/main_ralative_title"
@@ -35,14 +37,15 @@
                 android:padding="10dp"
                 android:src="@drawable/audio_horn" />
 
-            <TextView
+            <com.vunke.education.view.HorseRaceLampTextView
                 android:id="@+id/main_broadcas_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/audio_horn_img"
-                android:text="@string/text"
-                android:singleLine="true"
+                android:maxLines="1"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:textColor="@color/color_text_white"
                 android:textSize="24sp" />
         </RelativeLayout>
@@ -53,6 +56,8 @@
         android:id="@+id/include_main_view1"
         android:layout_below="@+id/main_ralative_title"
         android:layout_marginLeft="55dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:paddingTop="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
@@ -77,6 +82,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginLeft="10dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@id/main_surfaceview">
             <com.vunke.education.view.RoundAngleImageView
                 android:id="@+id/main_big_view1"
@@ -94,6 +101,8 @@
             android:paddingBottom="8dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@id/main_relative_view1">
             <com.vunke.education.view.RoundAngleImageView
                 android:id="@+id/main_big_view2"
@@ -110,6 +119,8 @@
             android:paddingBottom="8dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@id/main_relative_view2">
             <com.vunke.education.view.RoundAngleImageView
                 android:id="@+id/main_big_view3"
@@ -129,6 +140,8 @@
             android:paddingRight="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_below="@+id/main_relative_view1"
             android:layout_toRightOf="@id/main_surfaceview">
             <com.vunke.education.view.RoundAngleImageView
@@ -147,6 +160,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginTop="5dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_below="@+id/main_relative_view2"
             android:layout_toRightOf="@id/main_relative_view4">
             <com.vunke.education.view.RoundAngleImageView
@@ -165,6 +180,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginTop="5dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_below="@+id/main_relative_view3"
             android:layout_toRightOf="@id/main_relative_view5">
             <com.vunke.education.view.RoundAngleImageView
@@ -184,6 +201,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/include_main_view2"
         android:layout_marginLeft="65dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_below="@+id/include_main_view1">
         <com.vunke.education.view.KuangRelativeLayout
             android:id="@+id/main_relative_watch_history"
@@ -191,14 +210,18 @@
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="11dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true">
 
             <RelativeLayout
                 android:layout_width="202dp"
                 android:layout_height="120dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:background="@color/color_brown">
 
                 <com.vunke.education.view.RoundAngleImageView
@@ -228,13 +251,17 @@
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:paddingLeft="11dp"
-            android:paddingRight="11dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@+id/main_relative_watch_history">
 
             <RelativeLayout
                 android:layout_width="202dp"
                 android:layout_height="120dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:background="@color/color_turquoise">
 
                 <com.vunke.education.view.RoundAngleImageView
@@ -264,12 +291,16 @@
             android:focusable="false"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@+id/main_relative_ranking_list">
             <com.vunke.education.view.KuangRelativeLayout
                 android:id="@+id/main_ralative_small_view1"
                 android:layout_width="105dp"
                 android:layout_height="144dp"
-                android:padding="10dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:layout_margin="10dp"
                 android:layout_centerVertical="true">
                 <com.vunke.education.view.RoundAngleImageView
                     android:id="@+id/main_small_view1"
@@ -285,18 +316,17 @@
                     android:text="@string/children_education_graphics"
                     android:textColor="@color/color_text_white2"
                     android:singleLine="true"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     />
             </com.vunke.education.view.KuangRelativeLayout>
-
-
 
             <com.vunke.education.view.KuangRelativeLayout
                 android:id="@+id/main_ralative_small_view2"
                 android:layout_width="105dp"
                 android:layout_height="144dp"
-                android:padding="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="10dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:layout_toRightOf="@+id/main_ralative_small_view1"
                 android:layout_centerVertical="true">
                 <com.vunke.education.view.RoundAngleImageView
@@ -314,7 +344,7 @@
                     android:layout_alignParentBottom="true"
                     android:singleLine="true"
                     android:layout_marginBottom="5dp"
-                    android:textSize="18sp"/>
+                    android:textSize="16sp"/>
             </com.vunke.education.view.KuangRelativeLayout>
         </RelativeLayout>
 
@@ -325,12 +355,16 @@
             android:id="@+id/main_small_relative2"
             android:focusable="false"
             android:gravity="center_vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@+id/main_small_relative1">
             <com.vunke.education.view.KuangRelativeLayout
                 android:id="@+id/main_ralative_small_view3"
                 android:layout_width="105dp"
                 android:layout_height="144dp"
                 android:padding="10dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:layout_centerVertical="true">
                 <com.vunke.education.view.RoundAngleImageView
                     android:id="@+id/main_small_view3"
@@ -355,6 +389,8 @@
                 android:layout_width="105dp"
                 android:layout_height="144dp"
                 android:padding="10dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:layout_toRightOf="@+id/main_ralative_small_view3"
                 android:layout_centerVertical="true">
                 <com.vunke.education.view.RoundAngleImageView
@@ -380,6 +416,8 @@
             android:layout_width="234dp"
             android:layout_height="150dp"
             android:id="@+id/main_small_relative3"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@id/main_small_relative2">
             <com.vunke.education.view.KuangRelativeLayout
                 android:layout_width="wrap_content"

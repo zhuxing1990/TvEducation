@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/layout_background"
     android:fitsSystemWindows="true"
-    tools:context="com.vunke.education.activity.TvVideoListActivity">
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context=".activity.TvVideoListActivity">
 
     <RelativeLayout
         android:id="@+id/videolist_title"
@@ -32,27 +34,37 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/videolist_title"
         android:layout_marginLeft="20dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_marginTop="60dp">
 
         <RelativeLayout
             android:id="@+id/videolist_schoollist"
             android:layout_width="140dp"
             android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:background="@color/color_background_blue3">
 
             <ScrollView
                 android:id="@+id/videolist_school_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
 
                     <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/videolist_primary_school"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp">
+                        android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -69,6 +81,8 @@
                         android:id="@+id/videolist_junior_middle_school"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/videolist_primary_school">
 
                         <TextView
@@ -85,6 +99,8 @@
                         android:id="@+id/videolist_high_school"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/videolist_junior_middle_school">
 
                         <TextView
@@ -101,6 +117,8 @@
                         android:id="@+id/videolist_foreign_language_study"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/videolist_high_school">
 
                         <TextView
@@ -117,6 +135,8 @@
                         android:id="@+id/videolist_equivalency_exam"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/videolist_foreign_language_study">
 
                         <TextView
@@ -133,6 +153,8 @@
                         android:id="@+id/videolist_open_class"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/videolist_equivalency_exam"
                         android:layout_centerHorizontal="true">
 
@@ -154,6 +176,8 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:padding="10dp">
 
                 <ImageView
@@ -169,21 +193,29 @@
             android:id="@+id/videolist_gradelist"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_toRightOf="@+id/videolist_schoollist"
             android:background="@color/color_background_blue2">
 
             <ScrollView
                 android:id="@+id/videwlist_grade"
                 android:layout_width="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:layout_height="match_parent">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
 
                     <com.vunke.education.view.KuangRelativeLayout3
                         android:id="@+id/gradelist_one_grade"
                         android:layout_width="match_parent"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_height="60dp">
 
                         <TextView
@@ -200,6 +232,8 @@
                         android:id="@+id/gradelist_two_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/gradelist_one_grade">
 
                         <TextView
@@ -216,6 +250,8 @@
                         android:id="@+id/gradelist_three_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/gradelist_two_grade">
 
                         <TextView
@@ -232,6 +268,8 @@
                         android:id="@+id/gradelist_four_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/gradelist_three_grade">
 
                         <TextView
@@ -248,6 +286,8 @@
                         android:id="@+id/gradelist_five_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/gradelist_four_grade">
 
                         <TextView
@@ -264,6 +304,8 @@
                         android:id="@+id/gradelist_six_grade"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
                         android:layout_below="@+id/gradelist_five_grade">
 
                         <TextView
@@ -285,21 +327,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/videolist_title"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_toRightOf="@+id/videolist_learninglist">
 
         <RelativeLayout
             android:id="@+id/videolist_cplist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_marginLeft="30dp">
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
 
                     <com.vunke.education.view.KuangTextView
                         android:id="@+id/videolist_bestv"
@@ -367,12 +417,12 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/videolist_cplist"
-            android:paddingLeft="30dp"
-            android:paddingTop="20dp">
+            android:layout_below="@+id/videolist_cplist">
 
             <com.vunke.education.view.TvFocusGridView
                 android:id="@+id/videolist_gridview"
+                android:paddingTop="20dp"
+                android:paddingLeft="70dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"/>

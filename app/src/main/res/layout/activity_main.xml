@@ -2,21 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:background="@drawable/layout_background">
 
     <RelativeLayout
         android:id="@+id/main_ralative_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="45dp"
+        android:paddingTop="40dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/main_logo"
             android:layout_width="265dp"
             android:layout_height="35dp"
-            android:layout_marginLeft="45dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/tveduecation_logo" />
 
         <RelativeLayout
@@ -34,13 +37,15 @@
                 android:padding="10dp"
                 android:src="@drawable/audio_horn" />
 
-            <TextView
+            <com.vunke.education.view.HorseRaceLampTextView
                 android:id="@+id/main_broadcas_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/audio_horn_img"
-                android:text="@string/text"
+                android:maxLines="1"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:textColor="@color/color_text_white"
                 android:textSize="24sp" />
         </RelativeLayout>
@@ -48,109 +53,36 @@
     <include
         android:id="@+id/include_main_view1"
         android:layout_below="@+id/main_ralative_title"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="55dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         layout="@layout/include_main_view1"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content" />
     <include
         android:layout_marginTop="15dp"
         android:id="@+id/include_main_view2"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="65dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_below="@+id/include_main_view1"
         layout="@layout/include_main_view2"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         />
 
-    <HorizontalScrollView
-        android:id="@+id/main_horizontalscrollview"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/main_home_page"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home_page"
-                android:layout_margin="25dp"
-                android:textSize="24sp"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_boutique_recommend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/boutique_recommend"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:layout_toRightOf="@+id/main_home_page"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_infant_enlightenment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/infant_enlightenment"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:layout_toRightOf="@+id/main_boutique_recommend"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_primary_and_secondary_schools"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/main_infant_enlightenment"
-                android:text="@string/primary_and_secondary_schools"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_foreign_study"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/foreign_study"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:layout_toRightOf="@+id/main_primary_and_secondary_schools"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_open_class"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/open_class"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:layout_toRightOf="@+id/main_foreign_study"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_expert_lecture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/expert_lecture"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:layout_toRightOf="@+id/main_open_class"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_outdoor_activities"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/outdoor_activities"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:layout_toRightOf="@+id/main_expert_lecture"
-                android:textColor="@color/color_text_white3"/>
-            <TextView
-                android:id="@+id/main_free_tutorial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/free_tutorial"
-                android:textSize="24sp"
-                android:layout_margin="25dp"
-                android:layout_toRightOf="@+id/main_outdoor_activities"
-                android:textColor="@color/color_text_white3"/>
-        </RelativeLayout>
-    </HorizontalScrollView>
+   <include
+       layout="@layout/include_main_view3"
+       android:layout_height="wrap_content"
+       android:layout_width="wrap_content"
+       android:id="@+id/include_main_view3"
+       android:layout_alignParentBottom="true"
+       android:layout_marginLeft="50dp"
+       android:layout_marginBottom="20dp"
+       android:clipChildren="false"
+       android:clipToPadding="false"
+       android:scrollbars="none"/>
 </RelativeLayout>

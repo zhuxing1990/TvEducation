@@ -3,17 +3,21 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:paddingLeft="10dp">
     <RelativeLayout
         android:id="@+id/videolist_gridview_ralative"
         android:layout_width="145dp"
         android:layout_height="200dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:padding="10dp">
         <ImageView
             android:id="@+id/videolist_gridview_videoimg"
             android:layout_width="145dp"
             android:layout_height="200dp"
-            android:src="@drawable/videolist_gridview_item_img"/>
+            android:src="@drawable/default_pic3"/>
         <TextView
             android:id="@+id/videolist_gridview_videotime"
             android:layout_width="match_parent"

@@ -3,24 +3,23 @@ package com.vunke.education.model;
 import java.util.List;
 
 /**
- * Created by zhuxi on 2017/3/30.
+ * Created by zhuxi on 2017/4/11.
  */
 public class MainDataBean {
 
-
     /**
      * authname :
-     * blockid : 010101
-     * content :
-     * createtime : 2017-03-06 14:47:29
-     * infoid : 9039
+     * blockid : 0802
+     * content : www.bai.du
+     * createtime : 2017-03-14 11:21:06
+     * infoid : 0
      * inter1 : 0
      * inter2 : 0
      * inter3 : 0
      * inter4 : 0
-     * istop : 1002
+     * istop : 3
      * lastauthtime :
-     * lasttime : 2017-03-06 14:47:29
+     * lasttime : 2017-03-14 11:21:06
      * mainpicurl :
      * modeno : 1.0
      * pic1 :
@@ -47,8 +46,8 @@ public class MainDataBean {
      * string7 :
      * string8 :
      * string9 :
-     * tag : 1002
-     * title : 一年级教学视频
+     * tag :
+     * title : 关于我们
      * txt1 :
      * txt2 :
      * txt3 :
@@ -64,26 +63,26 @@ public class MainDataBean {
 
     private MoveBean move;
     /**
-     * move : {"authname":"","blockid":"010101","content":"","createtime":"2017-03-06 14:47:29","infoid":9039,"inter1":0,"inter2":0,"inter3":0,"inter4":0,"istop":"1002","lastauthtime":"","lasttime":"2017-03-06 14:47:29","mainpicurl":"","modeno":"1.0","pic1":"","pic2":"","pic3":"","pic4":"","pic5":"","relblocks":"","seqno":1,"stataccessnum":0,"state":"10.1","string1":"","string10":"","string11":"","string12":"","string13":"","string14":"","string15":"","string2":"","string3":"","string4":"","string5":"","string6":"","string7":"","string8":"","string9":"","tag":"1002","title":"一年级教学视频","txt1":"","txt2":"","txt3":"","type1":"","type2":"","type3":"","type4":"","type5":"","type6":"","userid":103,"username":"李嘉伦"}
-     * index : [{"creatTime":{"date":8,"day":3,"hours":1,"minutes":11,"month":2,"seconds":42,"time":1488906702974,"timezoneOffset":-480,"year":117},"implementAddress":"","implementContent":"\\bgmgr\\images\\img.png","implementId":"9039","implementPackage":"","indexId":"1","jsondata":"","modeType":"1.5","orda":1,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":7,"minutes":42,"month":2,"seconds":14,"time":1490830934101,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/six_1.png","implementId":"9039","implementPackage":"","indexId":"3","jsondata":"","modeType":"1.0","orda":3,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":7,"minutes":42,"month":2,"seconds":17,"time":1490830937324,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/six_2.png","implementId":"9039","implementPackage":"","indexId":"4","jsondata":"","modeType":"1.0","orda":4,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":7,"minutes":42,"month":2,"seconds":21,"time":1490830941204,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/six_3.png","implementId":"9039","implementPackage":"","indexId":"5","jsondata":"","modeType":"1.0","orda":5,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":7,"minutes":42,"month":2,"seconds":24,"time":1490830944917,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/six_4.png","implementId":"9039","implementPackage":"","indexId":"6","jsondata":"","modeType":"1.0","orda":6,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":7,"minutes":42,"month":2,"seconds":27,"time":1490830947940,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/six_5.png","implementId":"9039","implementPackage":"","indexId":"7","jsondata":"","modeType":"1.0","orda":7,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/four_1.png","implementId":"9039","implementPackage":"","indexId":"8","jsondata":"","modeType":"1.1","orda":8,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/four_2.png","implementId":"9039","implementPackage":"","indexId":"9","jsondata":"","modeType":"1.1","orda":9,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/four_3.png","implementId":"9039","implementPackage":"","indexId":"10","jsondata":"","modeType":"1.1","orda":10,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/four_4.png","implementId":"9039","implementPackage":"","indexId":"11","jsondata":"","modeType":"1.1","orda":11,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"","implementContent":"广告位广告位广告位广告位广告位广告位广告位广告位广告位广告位广告位","implementId":"","implementPackage":"","indexId":"12","jsondata":"","modeType":"1.2","orda":12,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"首页","implementId":"1","implementPackage":"","indexId":"13","jsondata":"","modeType":"1.3","orda":13,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"精品推荐 ","implementId":"11","implementPackage":"","indexId":"14","jsondata":"","modeType":"1.3","orda":14,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"幼儿启蒙","implementId":"1","implementPackage":"","indexId":"15","jsondata":"","modeType":"1.3","orda":15,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"中小学","implementId":"1","implementPackage":"","indexId":"16","jsondata":"","modeType":"1.3","orda":16,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"外国留学","implementId":"1","implementPackage":"","indexId":"17","jsondata":"","modeType":"1.3","orda":17,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"公开课","implementId":"1","implementPackage":"","indexId":"18","jsondata":"","modeType":"1.3","orda":18,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"户外活动","implementId":"1","implementPackage":"","indexId":"19","jsondata":"","modeType":"1.3","orda":19,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"专家讲座","implementId":"1","implementPackage":"","indexId":"20","jsondata":"","modeType":"1.3","orda":20,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.TvVideoListActivity","implementContent":"免费教程","implementId":"11","implementPackage":"","indexId":"21","jsondata":"","modeType":"1.3","orda":21,"transdata":"","updataTime":null},{"creatTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":29,"time":1490813789713,"timezoneOffset":-480,"year":117},"implementAddress":"com.vunke.education.activity.VideoDetailsActivity","implementContent":"http://124.232.136.239:8089/image/six_6.png","implementId":"9039","implementPackage":"","indexId":"2","jsondata":"","modeType":"1.0","orda":2,"transdata":"","updataTime":{"date":30,"day":4,"hours":2,"minutes":56,"month":2,"seconds":34,"time":1490813794756,"timezoneOffset":-480,"year":117}}]
-     * code : 0
+     * move : {"authname":"","blockid":"0802","content":"www.bai.du","createtime":"2017-03-14 11:21:06","infoid":0,"inter1":0,"inter2":0,"inter3":0,"inter4":0,"istop":"3","lastauthtime":"","lasttime":"2017-03-14 11:21:06","mainpicurl":"","modeno":"1.0","pic1":"","pic2":"","pic3":"","pic4":"","pic5":"","relblocks":"","seqno":1,"stataccessnum":0,"state":"10.1","string1":"","string10":"","string11":"","string12":"","string13":"","string14":"","string15":"","string2":"","string3":"","string4":"","string5":"","string6":"","string7":"","string8":"","string9":"","tag":"","title":"关于我们","txt1":"","txt2":"","txt3":"","type1":"","type2":"","type3":"","type4":"","type5":"","type6":"","userid":103,"username":"李嘉伦"}
+     * index : [{"creat_time":"2017-3-8.1.11. 42. 0","implement_address":"","implement_content":"","implement_id":"0","implement_package":"","index_id":"1","jsondata":"","mode_type":"1.5","orda":1,"transdata":"","updata_time":"2017-04-10 10:59:48"},{"creat_time":"2017-3-30.7.42. 14. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/six_1.png","implement_id":"1","implement_package":"","index_id":"3","jsondata":"","mode_type":"1.0","orda":3,"transdata":"","updata_time":"2017-04-08 17:35:25"},{"creat_time":"2017-3-30.7.42. 17. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/six_2.png","implement_id":"2","implement_package":"","index_id":"4","jsondata":"","mode_type":"1.0","orda":4,"transdata":"","updata_time":"2017-04-08 17:36:20"},{"creat_time":"2017-3-30.7.42. 21. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/six_3.png","implement_id":"3","implement_package":"","index_id":"5","jsondata":"","mode_type":"1.0","orda":5,"transdata":"","updata_time":"2017-04-08 16:30:18"},{"creat_time":"2017-3-30.7.42. 24. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/six_4.png","implement_id":"4","implement_package":"","index_id":"6","jsondata":"","mode_type":"1.0","orda":6,"transdata":"","updata_time":"2017-04-08 17:36:53"},{"creat_time":"2017-3-30.7.42. 27. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/six_5.png","implement_id":"5","implement_package":"","index_id":"7","jsondata":"","mode_type":"1.0","orda":7,"transdata":"","updata_time":"2017-04-08 17:34:47"},{"creat_time":"2017-3-30.2.56. 29. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/four_1.png","implement_id":"20","implement_package":"","index_id":"8","jsondata":"","mode_type":"1.1","orda":8,"transdata":"","updata_time":"2017-04-10 11:10:09"},{"creat_time":"2017-3-30.2.56. 29. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/four_2.png","implement_id":"7","implement_package":"","index_id":"9","jsondata":"","mode_type":"1.1","orda":9,"transdata":"","updata_time":"2017-04-08 16:29:57"},{"creat_time":"2017-3-30.2.56. 29. 0","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/four_3.png","implement_id":"8","implement_package":"","index_id":"10","jsondata":"","mode_type":"1.1","orda":10,"transdata":"","updata_time":"2017-04-08 16:29:52"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/four_4.png","implement_id":"9","implement_package":"","index_id":"11","jsondata":"","mode_type":"1.1","orda":11,"transdata":"","updata_time":"2017-04-08 17:35:59"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"","implement_content":"欢迎您观看教育视频","implement_id":"10","implement_package":"","index_id":"12","jsondata":"","mode_type":"1.2","orda":12,"transdata":"","updata_time":"2017-04-06 10:19:29"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"首页","implement_id":"11","implement_package":"","index_id":"13","jsondata":"","mode_type":"1.3","orda":13,"transdata":"","updata_time":"2017-04-08 16:28:49"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"精品推荐 ","implement_id":"12","implement_package":"","index_id":"14","jsondata":"","mode_type":"1.3","orda":14,"transdata":"","updata_time":"2017-04-08 16:29:05"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"幼儿启蒙","implement_id":"13","implement_package":"","index_id":"15","jsondata":"","mode_type":"1.3","orda":15,"transdata":"","updata_time":"2017-04-08 16:29:13"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"中小学","implement_id":"14","implement_package":"","index_id":"16","jsondata":"","mode_type":"1.3","orda":16,"transdata":"","updata_time":"2017-04-08 16:29:17"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"外国留学","implement_id":"15","implement_package":"","index_id":"17","jsondata":"","mode_type":"1.3","orda":17,"transdata":"","updata_time":"2017-04-08 16:29:21"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"公开课","implement_id":"16","implement_package":"","index_id":"18","jsondata":"","mode_type":"1.3","orda":18,"transdata":"","updata_time":"2017-04-08 16:29:24"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"户外活动","implement_id":"17","implement_package":"","index_id":"19","jsondata":"","mode_type":"1.3","orda":19,"transdata":"","updata_time":"2017-04-08 16:29:29"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"专家讲座","implement_id":"18","implement_package":"","index_id":"20","jsondata":"","mode_type":"1.3","orda":20,"transdata":"","updata_time":"2017-04-08 16:29:33"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.TvVideoListActivity","implement_content":"免费教程","implement_id":"19","implement_package":"","index_id":"21","jsondata":"","mode_type":"1.3","orda":21,"transdata":"","updata_time":"2017-04-08 16:29:42"},{"creat_time":"2017-3-30.2.56. 29. 713000000","implement_address":"com.vunke.education.activity.VideoDetailsActivity","implement_content":"http://124.232.136.239:8089/image/six_6.png","implement_id":"6","implement_package":"","index_id":"2","jsondata":"","mode_type":"1.0","orda":2,"transdata":"","updata_time":"2017-04-10 11:09:43"}]
+     * code : 200
      * message : 正常服务
      */
 
     private String code;
     private String message;
     /**
-     * creatTime : {"date":8,"day":3,"hours":1,"minutes":11,"month":2,"seconds":42,"time":1488906702974,"timezoneOffset":-480,"year":117}
-     * implementAddress :
-     * implementContent : \bgmgr\images\img.png
-     * implementId : 9039
-     * implementPackage :
-     * indexId : 1
+     * creat_time : 2017-3-8.1.11. 42. 0
+     * implement_address :
+     * implement_content :
+     * implement_id : 0
+     * implement_package :
+     * index_id : 1
      * jsondata :
-     * modeType : 1.5
+     * mode_type : 1.5
      * orda : 1
      * transdata :
-     * updataTime : null
+     * updata_time : 2017-04-10 10:59:48
      */
 
     private List<IndexBean> index;
@@ -583,76 +582,64 @@ public class MainDataBean {
     }
 
     public static class IndexBean {
-        /**
-         * date : 8
-         * day : 3
-         * hours : 1
-         * minutes : 11
-         * month : 2
-         * seconds : 42
-         * time : 1488906702974
-         * timezoneOffset : -480
-         * year : 117
-         */
-
-        private CreatTimeBean creatTime;
-        private String implementAddress;
-        private String implementContent;
-        private String implementId;
-        private String implementPackage;
-        private String indexId;
+        private String creat_time;
+        private String implement_address;
+        private String implement_content;
+        private int implement_id;
+        private String implement_package;
+        private String index_id;
         private String jsondata;
-        private String modeType;
+        private String mode_type;
         private int orda;
         private String transdata;
-        private Object updataTime;
+        private String updata_time;
 
-        public CreatTimeBean getCreatTime() {
-            return creatTime;
+        public String getCreat_time() {
+            return creat_time;
         }
 
-        public void setCreatTime(CreatTimeBean creatTime) {
-            this.creatTime = creatTime;
+        public void setCreat_time(String creat_time) {
+            this.creat_time = creat_time;
         }
 
-        public String getImplementAddress() {
-            return implementAddress;
+        public String getImplement_address() {
+            return implement_address;
         }
 
-        public void setImplementAddress(String implementAddress) {
-            this.implementAddress = implementAddress;
+        public void setImplement_address(String implement_address) {
+            this.implement_address = implement_address;
         }
 
-        public String getImplementContent() {
-            return implementContent;
+        public String getImplement_content() {
+            return implement_content;
         }
 
-        public void setImplementContent(String implementContent) {
-            this.implementContent = implementContent;
+        public void setImplement_content(String implement_content) {
+            this.implement_content = implement_content;
         }
 
-        public String getImplementId() {
-            return implementId;
+        public int getImplement_id() {
+            return implement_id;
         }
 
-        public void setImplementId(String implementId) {
-            this.implementId = implementId;
+        public void setImplement_id(int implement_id) {
+            this.implement_id = implement_id;
         }
 
-        public String getImplementPackage() {
-            return implementPackage;
+        public String getImplement_package() {
+            return implement_package;
         }
 
-        public void setImplementPackage(String implementPackage) {
-            this.implementPackage = implementPackage;
+        public void setImplement_package(String implement_package) {
+            this.implement_package = implement_package;
         }
 
-        public String getIndexId() {
-            return indexId;
+        public String getIndex_id() {
+            return index_id;
         }
 
-        public void setIndexId(String indexId) {
-            this.indexId = indexId;
+        public void setIndex_id(String index_id) {
+            this.index_id = index_id;
         }
 
         public String getJsondata() {
@@ -663,12 +650,12 @@ public class MainDataBean {
             this.jsondata = jsondata;
         }
 
-        public String getModeType() {
-            return modeType;
+        public String getMode_type() {
+            return mode_type;
         }
 
-        public void setModeType(String modeType) {
-            this.modeType = modeType;
+        public void setMode_type(String mode_type) {
+            this.mode_type = mode_type;
         }
 
         public int getOrda() {
@@ -687,96 +674,12 @@ public class MainDataBean {
             this.transdata = transdata;
         }
 
-        public Object getUpdataTime() {
-            return updataTime;
+        public String getUpdata_time() {
+            return updata_time;
         }
 
-        public void setUpdataTime(Object updataTime) {
-            this.updataTime = updataTime;
-        }
-
-        public static class CreatTimeBean {
-            private int date;
-            private int day;
-            private int hours;
-            private int minutes;
-            private int month;
-            private int seconds;
-            private long time;
-            private int timezoneOffset;
-            private int year;
-
-            public int getDate() {
-                return date;
-            }
-
-            public void setDate(int date) {
-                this.date = date;
-            }
-
-            public int getDay() {
-                return day;
-            }
-
-            public void setDay(int day) {
-                this.day = day;
-            }
-
-            public int getHours() {
-                return hours;
-            }
-
-            public void setHours(int hours) {
-                this.hours = hours;
-            }
-
-            public int getMinutes() {
-                return minutes;
-            }
-
-            public void setMinutes(int minutes) {
-                this.minutes = minutes;
-            }
-
-            public int getMonth() {
-                return month;
-            }
-
-            public void setMonth(int month) {
-                this.month = month;
-            }
-
-            public int getSeconds() {
-                return seconds;
-            }
-
-            public void setSeconds(int seconds) {
-                this.seconds = seconds;
-            }
-
-            public long getTime() {
-                return time;
-            }
-
-            public void setTime(long time) {
-                this.time = time;
-            }
-
-            public int getTimezoneOffset() {
-                return timezoneOffset;
-            }
-
-            public void setTimezoneOffset(int timezoneOffset) {
-                this.timezoneOffset = timezoneOffset;
-            }
-
-            public int getYear() {
-                return year;
-            }
-
-            public void setYear(int year) {
-                this.year = year;
-            }
+        public void setUpdata_time(String updata_time) {
+            this.updata_time = updata_time;
         }
     }
 }

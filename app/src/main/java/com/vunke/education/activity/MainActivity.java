@@ -14,7 +14,6 @@ import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
@@ -29,12 +28,15 @@ import com.vunke.education.util.NetUtils;
 import com.vunke.education.util.PicassoUtil;
 import com.vunke.education.util.UiUtils;
 import com.vunke.education.util.UserInfoUtil;
+import com.vunke.education.view.HorseRaceLampTextView;
 import com.vunke.education.view.KuangRelativeLayout;
 import com.vunke.education.view.KuangTextView;
 import com.vunke.education.view.RoundAngleImageView;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -49,7 +51,7 @@ import rx.schedulers.Schedulers;
  * 首页
  * Created by zhuxi on 2017/3/22.
  */
-public class MainActivity extends BaseActivity implements View.OnKeyListener, View.OnClickListener,SurfaceHolder.Callback, android.media.MediaPlayer.OnPreparedListener, android.media.MediaPlayer.OnCompletionListener, android.media.MediaPlayer.OnErrorListener{
+public class MainActivity extends BaseActivity implements View.OnKeyListener, View.OnClickListener, SurfaceHolder.Callback, android.media.MediaPlayer.OnPreparedListener, android.media.MediaPlayer.OnCompletionListener, android.media.MediaPlayer.OnErrorListener {
     private static final String TAG = "MainActivity";
     private String[] videoPaths = {
             "http://10.255.30.137:8082/EDS/RedirectPlay/lutong/vod/lutongCP0664900538/CP0664900538"
@@ -58,7 +60,7 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
 //    String videoPath = "http://v.cctv.com/flash/mp4video6/TMS/2011/01/05/cf752b1c12ce452b3040cab2f90bc265_h264818000nero_aac32-1.mp4";
 //    String videoPath =  "http://10.255.30.137:8082/EDS/RedirectPlay/lutong/vod/lutongCP0664900538/CP0664900538";
     String videoPath = "http://live.hcs.cmvideo.cn:8088/wd-hunanhd-1200/01.m3u8?msisdn=3000000000000&mdspid=&spid=699017&netType=5&sid=2201064496&pid=2028595851&timestamp=20170327111900&Channel_ID=0116_22300109-91000-20300&ProgramID=603996975&ParentNodeID=-99&preview=1&playseek=000000-000600&client_ip=123.206.208.186&assertID=2201064496&SecurityKey=20170327111900&mtv_session=cebd4400b57b1ed403b5f6c4704107b4&HlsSubType=1&HlsProfileId=1&encrypt=7e242fdb1db7a9a66d83221440f09cee";
-    private TextView main_broadcas_text;
+    private HorseRaceLampTextView main_broadcas_text;
     private KuangRelativeLayout main_relative_view1;
     private KuangRelativeLayout main_relative_view2;
     private KuangRelativeLayout main_relative_view3;
@@ -85,9 +87,10 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
     private KuangTextView main_expert_lecture;
     private KuangTextView main_outdoor_activities;
     private KuangTextView main_free_tutorial;
+
     private String userId;
     private MainDataBean bean;
-
+    private boolean startPlay = true;
     private SurfaceView main_surfaceView;
     private MediaPlayer mediaPlayer;
 
@@ -98,21 +101,21 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
                 String action = intent.getAction();
                 if (action.equals(UserInfoUtil.LOAD_USER_INFO_ACTION)) {
                     userId = intent.getStringExtra("userID");//用户ID
-                    WorkLog.e(TAG, "initData: userID:" + userId);
+                    WorkLog.i(TAG, "initData: userID:" + userId);
                     initData();
                 }
             }
         }
     };
-    private boolean startPlay = true;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        if (NetUtils.isNetConnected(mcontext)){
+        if (NetUtils.isNetConnected(mcontext)) {
             showToast("网络已经连接");
-        }else{
+        } else {
             showToast("网络未连接");
         }
         UserInfoUtil.initUserInfo(getApplicationContext());
@@ -122,263 +125,9 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         initVideo();
     }
 
-    /**
-     * 请求网络数据
-     */
-    private void initData() {
-        if (TextUtils.isEmpty(userId)) {
-            userId = "null";
-            WorkLog.e(TAG, "initData: userId:" + userId);
-        }
-        int versionCode = UiUtils.getVersionCode(getApplicationContext());
-        WorkLog.e(TAG, "initData: versionCode:" + versionCode);
-        try {
-            //1.1.2接口入参 json = {“versionCode”,”xx”,”userId”:”id”}
-            JSONObject json = new JSONObject();
-            json.put("versionCode", userId);
-            json.put("userId", versionCode);
-            OkGo.post(NetWorkRequest.BaseUrl + NetWorkRequest.HOME_DATE).tag(this).params("json", json.toString()).execute(new StringCallback() {
-                @Override
-                public void onSuccess(String s, Call call, Response response) {
-                    WorkLog.e(TAG, "onSuccess:");// WorkLog封装的Log
-                    try {
-                        JSONObject js = new JSONObject(s);
-                        if (js.has("code")) {
-                            int code = js.getInt("code");
-                            switch (code) {
-                                case 0:
-                                    Log.i(TAG, "onSuccess: code is 0");
-                                    Gson gson = new Gson();
-                                    bean = gson.fromJson(s, MainDataBean.class);
-
-                                    break;
-                                case -1:
-                                    Log.i(TAG, "onSuccess: code is -1");
-                                    break;
-                                case 1:
-                                    Log.i(TAG, "onSuccess: code is 1");
-                                    break;
-                            }
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                }
-
-                @Override
-                public void onError(Call call, Response response, Exception e) {
-                    super.onError(call, response, e);
-                    WorkLog.e(TAG, "onError:---------------------------------------------------------------- ");
-                }
-
-                @Override
-                public void onAfter(String s, Exception e) {
-                    super.onAfter(s, e);
-                    try {
-                        if (bean != null && bean.getCode().equals("0")) {
-                            if (bean.getIndex() != null && bean.getIndex().size() != 0){
-                                Observable.from(bean.getIndex())
-                                        .filter(new Func1<MainDataBean.IndexBean, Boolean>() {
-                                            @Override
-                                            public Boolean call(MainDataBean.IndexBean indexBean) {
-                                                return (( indexBean.getModeType().equals("1.0"))||( indexBean.getModeType().equals("1.1"))||( indexBean.getModeType().equals("1.4")));
-                                            }
-                                        })
-                                        .subscribeOn(Schedulers.io())
-                                        .observeOn(AndroidSchedulers.mainThread())
-                                        .subscribe(new Action1<MainDataBean.IndexBean>() {
-                                            @Override
-                                            public void call(MainDataBean.IndexBean indexBean) {
-                                                if (indexBean!=null){
-                                                    WorkLog.e(TAG,"图片地址"+indexBean.getImplementContent());
-                                                    String ImgContent = indexBean.getImplementContent();
-                                                    if (ImgContent.indexOf("six_1")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_big_view1);
-                                                    }else if(ImgContent.indexOf("six_2")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_big_view2);
-                                                    }else if(ImgContent.indexOf("six_3")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_big_view3);
-                                                    }else if(ImgContent.indexOf("six_4")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_big_view4);
-                                                    }else if(ImgContent.indexOf("six_5")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_big_view5);
-                                                    }else if(ImgContent.indexOf("six_6")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_big_view6);
-                                                    }
-                                                    else if (ImgContent.indexOf("four_1")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_small_view1);
-                                                    }else if (ImgContent.indexOf("four_2")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_small_view2);
-                                                    }else if (ImgContent.indexOf("four_3")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_small_view3);
-                                                    }else if (ImgContent.indexOf("four_4")!=-1){
-                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext,ImgContent,main_small_view4);
-                                                    }
-                                                }
-                                            }
-                                        });
-                            }
-                            Observable.from(bean.getIndex())
-                                    .filter(new Func1<MainDataBean.IndexBean, Boolean>() {
-                                        @Override
-                                        public Boolean call(MainDataBean.IndexBean indexBean) {
-                                            return (( indexBean.getModeType().equals("1.2"))||( indexBean.getModeType().equals("1.3")));
-                                        }
-                                    })
-                                    .subscribeOn(Schedulers.io())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe(new Action1<MainDataBean.IndexBean>() {
-                                        @Override
-                                        public void call(MainDataBean.IndexBean indexBean) {
-                                            if (indexBean!=null){
-                                                WorkLog.e(TAG,"文字"+indexBean.getImplementContent());
-                                                if (indexBean.getModeType().equals("1.2")){
-                                                    main_broadcas_text.setText(indexBean.getImplementContent());
-                                                }else if(indexBean.getModeType().equals("1.3")){
-                                                    switch (indexBean.getIndexId()){
-                                                        case "13":
-                                                            main_home_page.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "14":
-                                                            main_boutique_recommend.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "15":
-                                                            main_infant_enlightenment.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "16":
-                                                            main_primary_and_secondary_schools.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "17":
-                                                            main_foreign_study.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "18":
-                                                            main_open_class.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "19":
-                                                            main_expert_lecture.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "20":
-                                                            main_outdoor_activities.setText(indexBean.getImplementContent());
-                                                            break;
-                                                        case "21":
-                                                            main_free_tutorial.setText(indexBean.getImplementContent());
-                                                            break;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    });
-                        }
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
-                    }
-
-//                    Observable.unsafeCreate(new Observable.OnSubscribe<List<MainDataBean.IndexBean>>() {
-//                        @Override
-//                        public void call(Subscriber<? super List<MainDataBean.IndexBean>> subscriber) {
-//
-//                        }
-//                    }).subscribeOn(Schedulers.io())
-//                      .observeOn(AndroidSchedulers.mainThread())
-//                      .subscribe(new Subscriber<List<MainDataBean.IndexBean>>() {
-//                          @Override
-//                          public void onCompleted() {
-//
-//                          }
-//
-//                          @Override
-//                          public void onError(Throwable e) {
-//
-//                          }
-//
-//                          @Override
-//                          public void onNext(List<MainDataBean.IndexBean> indexBeen) {
-//
-//                          }
-//                      });
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (mediaPlayer!=null && mediaPlayer.isPlaying()){
-            mediaPlayer.pause();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (startPlay) {
-            startPlay = false;
-            return;
-        }
-        if (mediaPlayer!=null&& !mediaPlayer.isPlaying()){
-            mediaPlayer.start();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        try {
-            if (mBroadcastReceiver != null) {
-                unregisterReceiver(mBroadcastReceiver);
-            }
-        } catch (IllegalArgumentException e) {
-            // e.printStackTrace();
-        }
-        videoStop();
-    }
-
-    private void videoStop() {
-        if (mediaPlayer!=null&&mediaPlayer.isPlaying()){
-            mediaPlayer.pause();
-            mediaPlayer.release();
-            mediaPlayer= null;
-        }else if (mediaPlayer!=null && !mediaPlayer.isPlaying()){
-            mediaPlayer.release();
-            mediaPlayer= null;
-        }
-    }
-
-    private void initVideo() {
-        Observable.timer(500, TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
-            @Override
-            public void call(Long aLong) {
-                videoPlay();
-            }
-        });
-    }
-
-    private void videoPlay() {
-        try{
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.setDataSource(mcontext,Uri.parse(videoPath));
-            mediaPlayer.setDisplay(main_surfaceView.getHolder());
-            mediaPlayer.setOnPreparedListener(this);
-            mediaPlayer.setOnCompletionListener(this);
-            mediaPlayer.setOnErrorListener(this);
-            WorkLog.i(TAG, "initVideo: 开始装载");
-            mediaPlayer.prepare();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-
     private void initView() {
         main_surfaceView = (SurfaceView) findViewById(R.id.main_surfaceView);
-        main_broadcas_text = (TextView) findViewById(R.id.main_broadcas_text);
+        main_broadcas_text = (HorseRaceLampTextView) findViewById(R.id.main_broadcas_text);
         main_relative_view1 = (KuangRelativeLayout) findViewById(R.id.main_relative_view1);
         main_relative_view2 = (KuangRelativeLayout) findViewById(R.id.main_relative_view2);
         main_relative_view3 = (KuangRelativeLayout) findViewById(R.id.main_relative_view3);
@@ -416,7 +165,6 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         main_expert_lecture = (KuangTextView) findViewById(R.id.main_expert_lecture);
         main_outdoor_activities = (KuangTextView) findViewById(R.id.main_outdoor_activities);
         main_free_tutorial = (KuangTextView) findViewById(R.id.main_free_tutorial);
-
     }
 
     private void initListener() {
@@ -427,12 +175,11 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         main_relative_view5.setOnClickListener(this);
         main_relative_view6.setOnClickListener(this);
 
+        main_relative_view4.setOnKeyListener(this);
+
         main_relative_watch_history.setOnClickListener(this);
         main_relative_ranking_list.setOnClickListener(this);
         main_surfaceView.getHolder().addCallback(this);
-
-
-        main_home_page.setOnClickListener(this);
 
         main_relative_watch_history.setOnKeyListener(this);
         main_relative_ranking_list.setOnKeyListener(this);
@@ -440,122 +187,230 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         main_ralative_small_view4.setOnKeyListener(this);
         main_relative_view1.setOnKeyListener(this);
         main_relative_view4.setOnKeyListener(this);
-//        main_relative_view2.setOnFocusChangeListener(this);
-//        main_relative_view3.setOnFocusChangeListener(this);
-//        main_relative_view4.setOnFocusChangeListener(this);
-//        main_relative_view5.setOnFocusChangeListener(this);
-//        main_relative_view6.setOnFocusChangeListener(this);
-//
-//        main_relative_watch_history.setOnFocusChangeListener(this);
-//        main_relative_ranking_list.setOnFocusChangeListener(this);
-//
-//        main_ralative_small_view1.setOnFocusChangeListener(this);
-//        main_ralative_small_view2.setOnFocusChangeListener(this);
-//        main_ralative_small_view3.setOnFocusChangeListener(this);
-//        main_ralative_small_view4.setOnFocusChangeListener(this);
-//        main_ordering.setOnFocusChangeListener(this);
-//
-//        main_home_page.setOnFocusChangeListener(this);
-//        main_boutique_recommend.setOnFocusChangeListener(this);
-//        main_infant_enlightenment.setOnFocusChangeListener(this);
-//        main_primary_and_secondary_schools.setOnFocusChangeListener(this);
-//        main_foreign_study.setOnFocusChangeListener(this);
-//        main_open_class.setOnFocusChangeListener(this);
-//        main_expert_lecture.setOnFocusChangeListener(this);
-//        main_outdoor_activities.setOnFocusChangeListener(this);
-//        main_free_tutorial.setOnFocusChangeListener(this);
-//    }
 
+        main_ralative_small_view1.setOnClickListener(this);
+        main_ralative_small_view2.setOnClickListener(this);
+        main_ralative_small_view3.setOnClickListener(this);
+        main_ralative_small_view4.setOnClickListener(this);
 
+        main_home_page.setOnClickListener(this);
+        main_boutique_recommend.setOnClickListener(this);
+        main_infant_enlightenment.setOnClickListener(this);
+        main_primary_and_secondary_schools.setOnClickListener(this);
+        main_foreign_study.setOnClickListener(this);
+        main_open_class.setOnClickListener(this);
+        main_expert_lecture.setOnClickListener(this);
+        main_outdoor_activities.setOnClickListener(this);
+        main_free_tutorial.setOnClickListener(this);
     }
 
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        switch (v.getId()) {
-            case R.id.main_videoView:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                        main_relative_view1.requestFocus();
-                        return true;
-                    } else if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-                        return true;
-                    } else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-                        main_relative_watch_history.requestFocus();
-                        return true;
-                    }
-                }
-                break;
-            case R.id.main_relative_ranking_list:
-
-                break;
-            case R.id.main_relative_watch_history:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-                        main_home_page.requestFocus();
-                        return true;
-                    }
-                }
-                break;
-            case R.id.main_ralative_small_view4:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                        main_ordering.requestFocus();
-                        return true;
-                    }
-                }
-                break;
-            case R.id.main_relative_view1:
-                if (event.getAction() == KeyEvent.ACTION_DOWN){
-                    if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT)
-                        return true;
-                }
-                break;
-            case R.id.main_relative_view4:
-                if (event.getAction() == KeyEvent.ACTION_DOWN){
-                    if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT)
-                        return true;
-                }
-                break;
-            default:
-                break;
+    /**
+     * 请求网络数据
+     */
+    private void initData() {
+        if (TextUtils.isEmpty(userId)) {
+            userId = "null";
+            WorkLog.e(TAG, "initData: userId:" + userId);
         }
-        return false;
+        int versionCode = UiUtils.getVersionCode(getApplicationContext());
+        WorkLog.e(TAG, "initData: versionCode:" + versionCode);
+        try {
+            //1.1.2接口入参 json = {“versionCode”,”xx”,”userId”:”id”}
+            JSONObject json = new JSONObject();
+            json.put("versionCode", versionCode);
+            json.put("userId", userId);
+            WorkLog.i(TAG, "initData: json:" + json.toString());
+            OkGo.post(NetWorkRequest.BaseUrl + NetWorkRequest.HOME_DATE).tag(this).params("json", json.toString()).execute(new StringCallback() {
+                @Override
+                public void onSuccess(String s, Call call, Response response) {
+                    WorkLog.i(TAG, "onSuccess: \n" + s);// WorkLog封装的Log
+                    try {
+                        JSONObject js = new JSONObject(s);
+                        if (js.has("code")) {
+                            int code = js.getInt("code");
+                            switch (code) {
+                                case 200:
+                                    Log.i(TAG, "onSuccess: code is 0");
+                                    Gson gson = new Gson();
+                                    bean = gson.fromJson(s, MainDataBean.class);
+
+                                    break;
+                                case 400:
+                                    Log.i(TAG, "onSuccess: code is 400");
+                                    break;
+                                case 500:
+                                    Log.i(TAG, "onSuccess: code is 500");
+                                    break;
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onError(Call call, Response response, Exception e) {
+                    super.onError(call, response, e);
+                    WorkLog.e(TAG, "onError:---------------------------------------------------------------- ");
+                }
+
+                @Override
+                public void onAfter(String s, Exception e) {
+                    super.onAfter(s, e);
+                    try {
+                        if (bean != null && bean.getCode().equals("200")) {
+                            if (bean.getIndex() != null && bean.getIndex().size() != 0) {
+                                Observable.from(bean.getIndex())
+                                        .filter(new Func1<MainDataBean.IndexBean, Boolean>() {
+                                            @Override
+                                            public Boolean call(MainDataBean.IndexBean indexBean) {
+                                                return (indexBean.getMode_type().equals("1.0")) || indexBean.getMode_type().equals("1.1") || indexBean.getMode_type().equals("1.4");
+                                            }
+                                        })
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new Action1<MainDataBean.IndexBean>() {
+                                            @Override
+                                            public void call(MainDataBean.IndexBean indexBean) {
+                                                if (indexBean != null) {
+                                                    WorkLog.i(TAG, "图片地址" + indexBean.getImplement_content());
+                                                    String ImgContent = indexBean.getImplement_content();
+                                                    if (ImgContent.indexOf("six_1") != -1) {
+                                                        PicassoUtil.getInstantiation().onBigNetImage(mcontext, ImgContent, main_big_view1);
+                                                    } else if (ImgContent.indexOf("six_2") != -1) {
+                                                        PicassoUtil.getInstantiation().onBigNetImage(mcontext, ImgContent, main_big_view2);
+                                                    } else if (ImgContent.indexOf("six_3") != -1) {
+                                                        PicassoUtil.getInstantiation().onBigNetImage(mcontext, ImgContent, main_big_view3);
+                                                    } else if (ImgContent.indexOf("six_4") != -1) {
+                                                        PicassoUtil.getInstantiation().onBigNetImage(mcontext, ImgContent, main_big_view4);
+                                                    } else if (ImgContent.indexOf("six_5") != -1) {
+                                                        PicassoUtil.getInstantiation().onBigNetImage(mcontext, ImgContent, main_big_view5);
+                                                    } else if (ImgContent.indexOf("six_6") != -1) {
+                                                        PicassoUtil.getInstantiation().onBigNetImage(mcontext, ImgContent, main_big_view6);
+                                                    } else if (ImgContent.indexOf("four_1") != -1) {
+                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext, ImgContent, main_small_view1);
+                                                    } else if (ImgContent.indexOf("four_2") != -1) {
+                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext, ImgContent, main_small_view2);
+                                                    } else if (ImgContent.indexOf("four_3") != -1) {
+                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext, ImgContent, main_small_view3);
+                                                    } else if (ImgContent.indexOf("four_4") != -1) {
+                                                        PicassoUtil.getInstantiation().onWidgetImage(mcontext, ImgContent, main_small_view4);
+                                                    }
+                                                }
+                                            }
+                                        });
+                            }
+                            Observable.from(bean.getIndex())
+                                    .filter(new Func1<MainDataBean.IndexBean, Boolean>() {
+                                        @Override
+                                        public Boolean call(MainDataBean.IndexBean indexBean) {
+                                            return ((indexBean.getMode_type().equals("1.2")) || (indexBean.getMode_type().equals("1.3")));
+                                        }
+                                    })
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new Action1<MainDataBean.IndexBean>() {
+                                        @Override
+                                        public void call(MainDataBean.IndexBean indexBean) {
+                                            if (indexBean != null) {
+                                                WorkLog.i(TAG, "文字" + indexBean.getImplement_content());
+                                                if (indexBean.getMode_type().equals("1.2")) {
+                                                    main_broadcas_text.setText(indexBean.getImplement_content());
+                                                } else if (indexBean.getMode_type().equals("1.3")) {
+                                                    switch (indexBean.getIndex_id()) {
+                                                        case "13":
+                                                            main_home_page.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "14":
+                                                            main_boutique_recommend.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "15":
+                                                            main_infant_enlightenment.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "16":
+                                                            main_primary_and_secondary_schools.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "17":
+                                                            main_foreign_study.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "18":
+                                                            main_open_class.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "19":
+                                                            main_expert_lecture.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "20":
+                                                            main_outdoor_activities.setText(indexBean.getImplement_content());
+                                                            break;
+                                                        case "21":
+                                                            main_free_tutorial.setText(indexBean.getImplement_content());
+                                                            break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                        }
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
+    private void initVideo() {
+        Observable.timer(500, TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                videoPlay();
+            }
+        });
+    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.main_relative_view1:
-                Configs.intent = new Intent(mcontext,VideoDetailsActivity.class);
-                startActivity(Configs.intent);
-                break;
-            case R.id.main_relative_view2:
-                Configs.intent = new Intent(mcontext,VideoDetailsActivity.class);
-                startActivity(Configs.intent);;
-                break;
-            case R.id.main_relative_view3:
-                Configs.intent = new Intent(mcontext,VideoDetailsActivity.class);
-                startActivity(Configs.intent);
-                break;
-            case R.id.main_relative_view4:
-                Configs.intent = new Intent(mcontext,VideoDetailsActivity.class);
-                startActivity(Configs.intent);
-                break;
-            case R.id.main_relative_watch_history:
-                Configs.intent = new Intent(mcontext, WatchHistoryActivity.class);
-                startActivity(Configs.intent);
-                break;
-            case R.id.main_relative_ranking_list:
-                Configs.intent = new Intent(mcontext, RankingsActivity.class);
-                startActivity(Configs.intent);
-                break;
-            case R.id.main_home_page:
-                Configs.intent = new Intent(mcontext, TvVideoListActivity.class);
-                startActivity(Configs.intent);
-                break;
-            default:
-                break;
+    private void videoPlay() {
+        try {
+            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                WorkLog.i(TAG, "initVideo: mediaPlayer is playing,stopVideo and release mediaplayer");
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            // 设置播放的视频源
+            if (videoPath.startsWith("http://")){
+                WorkLog.i(TAG, "initVideo: get videopath is network video");
+                mediaPlayer.setDataSource(mcontext, Uri.parse(videoPath));
+            }else{
+                try{
+                    File file = new File(videoPath);
+                    if (!file.exists()){
+                        WorkLog.i(TAG, "initVideo: get videofile not exists");
+                        showToast("获取播放视频文件失败或者文件不存在");
+                        finish();
+                        return;
+                    }else{
+                        WorkLog.i(TAG, "initVideo: get videopath is local video");
+                        mediaPlayer.setDataSource(file.getAbsolutePath());
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            mediaPlayer.setDisplay(main_surfaceView.getHolder());
+            WorkLog.i(TAG, "initVideo: loading video");
+            mediaPlayer.prepareAsync();
+//            mediaPlayer.prepare();//prepare之后自动播放
+            mediaPlayer.setOnPreparedListener(this);
+            mediaPlayer.setOnCompletionListener(this);
+            mediaPlayer.setOnErrorListener(this);
+        } catch (Exception e) {
+            WorkLog.i(TAG, "initVideo: loading video error");
+            e.printStackTrace();
         }
     }
 
@@ -572,7 +427,7 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         WorkLog.i(TAG, "surfaceDestroyed: surfaceView 被销毁");
-        if (mediaPlayer!=null && mediaPlayer.isPlaying()){
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
             mediaPlayer.reset();
         }
@@ -580,26 +435,302 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
 
     @Override
     public void onCompletion(android.media.MediaPlayer mp) {
-        WorkLog.i(TAG, "onCompletion: 播放完毕");
-//        mediaPlayer.reset();
+        // 在播放完毕被回调
+        WorkLog.i(TAG, "onCompletion: video play completion");
+        if (mediaPlayer != null) {
+            mediaPlayer.reset();
+        }
+        replay();
     }
 
     @Override
     public boolean onError(android.media.MediaPlayer mp, int what, int extra) {
         WorkLog.i(TAG, "onError: 播放错误");
-        if (mediaPlayer!=null){
+        if (mediaPlayer != null) {
             mediaPlayer.reset();
+            mediaPlayer = null;
         }
+        initVideo();
         return false;
-
     }
 
     @Override
     public void onPrepared(android.media.MediaPlayer mp) {
-        WorkLog.i(TAG, "onPrepared: ");
-        Log.i(TAG, "装载完成");
+        WorkLog.i(TAG, "onPrepared: video load success,start play video");
         mediaPlayer.start();
         // 按照初始位置播放
         mediaPlayer.seekTo(0);
     }
+
+    private void videoStop() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        } else if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    /**
+     * 重新开始播放
+     */
+    protected void replay() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.seekTo(0);
+            showToast("重新播放");
+            return;
+        }
+        initVideo();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            WorkLog.i(TAG, "onPause: video Pause");
+            mediaPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (startPlay) {
+            startPlay = false;
+            return;
+        }
+        if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+            WorkLog.i(TAG, "onResume: video restart");
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            if (mBroadcastReceiver != null) {
+                unregisterReceiver(mBroadcastReceiver);
+            }
+        } catch (IllegalArgumentException e) {
+            // e.printStackTrace();
+        }
+        videoStop();
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        switch (v.getId()) {
+            case R.id.main_videoView:
+                if (isKeyDown(event)) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                        main_relative_view1.requestFocus();
+                        return true;
+                    } else if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+                        return true;
+                    } else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                        main_relative_watch_history.requestFocus();
+                        return true;
+                    }
+                }
+                break;
+            case R.id.main_relative_ranking_list:
+
+                break;
+            case R.id.main_relative_watch_history:
+                if (isKeyDown(event)) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                        main_home_page.requestFocus();
+                        return true;
+                    }
+                }
+                break;
+            case R.id.main_ralative_small_view4:
+                if (isKeyDown(event)) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                        main_ordering.requestFocus();
+                        return true;
+                    }
+                }
+                break;
+            case R.id.main_relative_view1:
+                if (isKeyDown(event)) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT)
+                        return true;
+                }
+                break;
+            case R.id.main_relative_view4:
+                if (isKeyDown(event)) {
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT)
+                        return true;
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                        main_ralative_small_view1.requestFocus();
+                        return true;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        return false;
+    }
+
+    private boolean isKeyDown(KeyEvent event) {
+        return event.getAction() == KeyEvent.ACTION_DOWN;
+    }
+
+    private long back_time = 0;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - back_time >= 2000) {
+                showToast("再按一次退出");
+                back_time = System.currentTimeMillis();
+                return false;
+            } else {
+//                this.finish();
+                android.os.Process.killProcess(android.os.Process.myPid());
+                return false;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.main_relative_view1:
+                StartUp(1);
+                break;
+            case R.id.main_relative_view2:
+                StartUp(2);
+                break;
+            case R.id.main_relative_view3:
+                StartUp(3);
+                break;
+            case R.id.main_relative_view4:
+                StartUp(4);
+                break;
+            case R.id.main_relative_view5:
+                StartUp(5);
+                break;
+            case R.id.main_relative_view6:
+                StartUp(bean.getIndex().size() - 1);
+                break;
+            case R.id.main_relative_watch_history:
+                Configs.intent = new Intent(mcontext, WatchHistoryActivity.class);
+                startActivity(Configs.intent);
+                break;
+            case R.id.main_relative_ranking_list:
+                Configs.intent = new Intent(mcontext, RankingsActivity.class);
+                startActivity(Configs.intent);
+                break;
+            case R.id.main_ralative_small_view1:
+                StartUp(6);
+                break;
+            case R.id.main_ralative_small_view2:
+                StartUp(7);
+                break;
+            case R.id.main_ralative_small_view3:
+                StartUp(8);
+                break;
+            case R.id.main_ralative_small_view4:
+                StartUp(9);
+                break;
+            case R.id.main_home_page:
+                StartUp(11);
+                break;
+            case R.id.main_boutique_recommend:
+                StartUp(12);
+                break;
+            case R.id.main_infant_enlightenment:
+                StartUp(13);
+                break;
+            case R.id.main_primary_and_secondary_schools:
+                StartUp(14);
+                break;
+            case R.id.main_foreign_study:
+                StartUp(15);
+                break;
+            case R.id.main_open_class:
+                StartUp(16);
+                break;
+            case R.id.main_expert_lecture:
+                StartUp(17);
+                break;
+            case R.id.main_outdoor_activities:
+                StartUp(18);
+                break;
+            case R.id.main_free_tutorial:
+                StartUp(19);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void StartUp(int position) {
+        if (BeanHasData(bean)) {
+            String packageName = bean.getIndex().get(position).getImplement_package();
+            String className = bean.getIndex().get(position).getImplement_address();
+            int implementId = bean.getIndex().get(position).getImplement_id();
+            UiUtils.StartAPP(packageName, className, implementId, mcontext);
+        }
+        UploadTimes(position);
+    }
+
+    private void UploadTimes(int position) {
+        try {
+            String statisticsId = bean.getIndex().get(position).getIndex_id();
+            JSONObject jsonItem = new JSONObject();
+            jsonItem.put("frequency", "");//点击次数
+            jsonItem.put("statisticsId", statisticsId);
+            JSONArray jsArray = new JSONArray();
+            jsArray.put(jsonItem);
+            JSONObject json = new JSONObject();
+            json.put("userId", userId);
+            json.put("versionCode", UiUtils.getVersionCode(mcontext));
+            json.put("item", jsArray);
+            WorkLog.i(TAG, "UploadTimes: json:" + json.toString());
+            OkGo.post(NetWorkRequest.BaseUrl + NetWorkRequest.STATISTICES_RBIT).tag(this).params("json", json.toString()).execute(new StringCallback() {
+                @Override
+                public void onSuccess(String s, Call call, Response response) {
+                    WorkLog.i(TAG, "onSuccess:--------------------------------------------------------------" + s);
+                }
+
+                @Override
+                public void onError(Call call, Response response, Exception e) {
+                    super.onError(call, response, e);
+                    WorkLog.e(TAG, "onError:---------------------------------------------------------------- ");
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean BeanHasData(MainDataBean bean) {
+        try {
+            if (bean == null) {
+                Log.i(TAG, "BeanHasData: bean is null");
+                return false;
+            }
+            if (!bean.getCode().equals("200")) {
+                Log.i(TAG, "BeanHasData: bean.getcode not is 0");
+                return false;
+            }
+            if (bean.getIndex().size() == 0 && bean.getIndex().isEmpty()) {
+                Log.i(TAG, "BeanHasData: bean.getIndex is null");
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }

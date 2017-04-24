@@ -61,11 +61,11 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
     private  Subscription subscribe;
     private  Subscription subscribe2;
     private  String videoStatus="";
+    private boolean isPlaying;
     // 视频文件地址
 //    String videoPath = "http://live.hcs.cmvideo.cn:8088/wd-hunanhd-1200/01.m3u8?msisdn=3000000000000&mdspid=&spid=699017&netType=5&sid=2201064496&pid=2028595851&timestamp=20170327111900&Channel_ID=0116_22300109-91000-20300&ProgramID=603996975&ParentNodeID=-99&preview=1&playseek=000000-000600&client_ip=123.206.208.186&assertID=2201064496&SecurityKey=20170327111900&mtv_session=cebd4400b57b1ed403b5f6c4704107b4&HlsSubType=1&HlsProfileId=1&encrypt=7e242fdb1db7a9a66d83221440f09cee";
     String videoPath = "http://v.cctv.com/flash/mp4video6/TMS/2011/01/05/cf752b1c12ce452b3040cab2f90bc265_h264818000nero_aac32-1.mp4";
     //    String videoPath ="http://10.255.30.137:8082/EDS/RedirectPlay/lutong/vod/lutongCP0664900538/CP0664900538";
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -180,7 +180,7 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
             mediaPlayer.setOnErrorListener(this);
         } catch (Exception e) {
             WorkLog.i(TAG, "initVideo: loading video error");
-            showToast("视频加载失败");
+//            showToast("视频加载失败");
             e.printStackTrace();
         }
     }
@@ -220,9 +220,9 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
         super.onDestroy();
         WorkLog.i(TAG, "onDestroy: ");
         stopVideo();
-        if (!subscribe.isUnsubscribed()){
+        if (subscribe!=null&&!subscribe.isUnsubscribed()){
             subscribe.unsubscribe();
-        }if (!subscribe2.isUnsubscribed()){
+        }if (subscribe2!=null&&!subscribe2.isUnsubscribed()){
             subscribe2.unsubscribe();
         }
         alphaAnimation0To1 = null;
@@ -240,12 +240,14 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
             videoplay_videoStatus.setText("暂停");
             mediaPlayer.start();
             showToast("继续播放");
+            isPlaying = true;
             return;
         }
         if (videoStatus.equals("暂停") && mediaPlayer.isPlaying()) {
             WorkLog.i(TAG, "pauseVideo: restart play video");
             videoplay_videoStatus.setText("继续");
             mediaPlayer.pause();
+            isPlaying = false;
             showToast("暂停播放");
             return;
         }
@@ -260,10 +262,13 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
             mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
+            isPlaying = false;
         } else if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
             WorkLog.i(TAG, "stopVideo: video not play,release video");
+            isPlaying = false;
             mediaPlayer.release();
             mediaPlayer = null;
+            isPlaying = false;
         }
     }
 
@@ -277,6 +282,7 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
             videoplay_videoStatus.setText("暂停");
             return;
         }
+        isPlaying = false;
         initVideo(0);
     }
 
@@ -355,10 +361,12 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
     public void onCompletion(MediaPlayer mp) {
         // 在播放完毕被回调
         WorkLog.i(TAG, "onCompletion: video play completion");
-        mediaPlayer.reset();
+        if (mediaPlayer!=null) {
+            mediaPlayer.reset();
+        }
         videoplay_play.setImageResource(R.drawable.video_restart);
         videoplay_videoStatus.setText("重播");
-        if (!subscribe.isUnsubscribed()){
+        if (subscribe!=null&&!subscribe.isUnsubscribed()){
             WorkLog.i(TAG,"onCompletion: unsubscribe");
             subscribe.unsubscribe();
         }
@@ -380,7 +388,10 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
     public boolean onError(MediaPlayer mp, int what, int extra) {
         // 发生错误重新播放
         WorkLog.i(TAG, "onError: play video error");
-        mediaPlayer.reset();
+        if (mediaPlayer != null) {
+            mediaPlayer.reset();
+        }
+        isPlaying = false;
         initVideo(0);
         return false;
     }
@@ -402,6 +413,7 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
      * 初始化视频播放位置和播放进度
      */
     private void initVideoProgress() {
+        isPlaying = true;
         WorkLog.i(TAG, "initVideoProgress: ");
         // 按照初始位置播放
         duration = mediaPlayer.getDuration();
@@ -534,5 +546,29 @@ public class VideoPlay2Activity extends BaseActivity implements View.OnClickList
         alphaAnimation1To0 = new AlphaAnimation(1f, 0f);
         alphaAnimation1To0.setDuration(1000);
         alphaAnimation1To0.setFillAfter(true);
+    }
+    private static final String STATE_PROGRESS_TIME = "progressTime";
+    private static final String STATE_VIDEO_DURATION = "videoDuration";
+    private static final String STATE_IS_PAUSED = "isPaused";
+    private static final String STATE_VIDEO_PATH = "videoPath";
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong("progressTime",mediaPlayer.getCurrentPosition());
+        outState.putLong(STATE_VIDEO_DURATION,mediaPlayer.getDuration());
+        outState.putBoolean(STATE_IS_PAUSED,isPlaying);
+        outState.putString(STATE_VIDEO_PATH,videoPath);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        long progressTime = savedInstanceState.getLong(STATE_PROGRESS_TIME);
+        mediaPlayer.seekTo((int)progressTime);
+        videoplay_videoprogress.setMax((int)savedInstanceState.getLong(STATE_VIDEO_DURATION));
+        if (!isPlaying){
+            mediaPlayer.pause();
+        }
+        videoPath = savedInstanceState.getString(STATE_VIDEO_PATH);
     }
 }

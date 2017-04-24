@@ -20,7 +20,6 @@ public class WatchHistoryActivity extends BaseActivity implements View.OnClickLi
     private KuangRelativeLayout2 wh_todaylist_rl2;
     private KuangRelativeLayout2 wh_todaylist_rl3;
     private KuangRelativeLayout2 wh_todaylist_rl4;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

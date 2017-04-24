@@ -4,12 +4,16 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:background="@drawable/layout_background">
 
     <RelativeLayout
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
         <RelativeLayout
             android:id="@+id/layout_logo"
@@ -27,6 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/layout_logo"
             android:layout_marginLeft="45dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:background="@drawable/contont_background"></RelativeLayout>
 
         <RelativeLayout
@@ -38,19 +44,20 @@
             android:layout_marginTop="31dp">
 
             <ImageView
-                android:id="@+id/iv_details"
+                android:id="@+id/videodetails_item_videoimg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/chanpinxq" />
+              android:src="@drawable/default_pic3"/>
 
             <TextView
+                android:id="@+id/videodetails_videotitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/iv_details"
+                android:layout_below="@id/videodetails_item_videoimg"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="14dp"
-                android:text="儿童趣味数学"
+                android:maxLines="1"
                 android:textSize="26sp" />
 
         </RelativeLayout>
@@ -86,21 +93,23 @@
                     android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/videodetails_classify"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tv_classify"
-                    android:text="一年级"
                     android:textColor="#f0f0f0"
+                    android:maxLines="1"
                     android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/videodetails_video_cp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_classify"
                     android:layout_marginTop="13dp"
                     android:layout_toRightOf="@id/tv_provider"
-                    android:text="新东方教育平台"
                     android:textColor="#f0f0f0"
+                    android:maxLines="1"
                     android:textSize="22sp" />
             </RelativeLayout>
 
@@ -129,21 +138,23 @@
                     android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/videodetails_videotime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tv_longtime"
-                    android:text="10:36"
                     android:textColor="#f0f0f0"
+                    android:maxLines="1"
                     android:textSize="22sp" />
 
                 <TextView
+                    android:id="@+id/videodetails_createtime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_longtime"
                     android:layout_marginTop="13dp"
                     android:layout_toRightOf="@id/tv_time"
-                    android:text="17-2-20"
                     android:textColor="#f0f0f0"
+                    android:maxLines="1"
                     android:textSize="22sp" />
             </RelativeLayout>
 
@@ -166,7 +177,7 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/tv_synopslscontent"
+                        android:id="@+id/videodetails_synopslscontent"
                         android:layout_width="600dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_contentsynopsls"
@@ -174,14 +185,13 @@
                         android:ellipsize="end"
                         android:lineSpacingExtra="5dp"
                         android:maxLines="2"
-                        android:text="本课程有几个特点: 设置及系统化、趣味化、生活化于一体，让学生在动脑的过程中，构建数学概念，激发学习兴趣培养思维能力"
                         android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/btn_play"
                         android:layout_width="160dp"
                         android:layout_height="80dp"
-                        android:layout_below="@id/tv_synopslscontent"
+                        android:layout_below="@id/videodetails_synopslscontent"
                         android:background="@drawable/play_2"
                         android:focusableInTouchMode="true" />
 
@@ -198,6 +208,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_top"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_marginTop="10dp">
 
         <TextView
@@ -210,18 +222,28 @@
             android:textColor="#fefefe"
             android:textSize="24sp" />
 
-        <com.vunke.education.view.TvFocusGridView3
-            android:id="@+id/gr_recommend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_contenttitle"
-            android:layout_marginLeft="52dp"
-            android:layout_marginRight="45dp"
-            android:horizontalSpacing="20dp"
-            android:nextFocusUp="@id/btn_play"
-            android:numColumns="8">
-
-        </com.vunke.education.view.TvFocusGridView3>
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:paddingLeft="32dp"
+           android:paddingRight="25dp"
+           android:clipChildren="false"
+           android:clipToPadding="false"
+           android:layout_below="@id/tv_contenttitle">
+           <com.vunke.education.view.TvFocusGridView3
+               android:id="@+id/gr_recommend"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingLeft="20dp"
+               android:paddingRight="20dp"
+               android:horizontalSpacing="20dp"
+               android:nextFocusUp="@id/btn_play"
+               android:clipChildren="false"
+               android:clipToPadding="false"
+               android:numColumns="8"
+               >
+           </com.vunke.education.view.TvFocusGridView3>
+       </RelativeLayout>
 
 
     </RelativeLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/watchhistory_item_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:focusable="true"
+    android:gravity="center"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/watchhistory_item_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chanping"/>
+    <TextView
+        android:id="@+id/watchhistory_item_tv"
+        android:layout_below="@+id/watchhistory_item_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/tv"
+        android:text="@string/look_to"
+        android:textColor="@color/color_text_white11"
+        android:textSize="16sp"/>
+    <TextView
+        android:id="@+id/watchhistory_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/watchhistory_item_img"
+        android:layout_toRightOf="@+id/watchhistory_item_tv"
+        android:textColor="@color/color_text_white11"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:text="00:00"/>
+</RelativeLayout>

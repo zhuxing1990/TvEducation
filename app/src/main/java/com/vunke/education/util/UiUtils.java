@@ -2,12 +2,20 @@ package com.vunke.education.util;
 
 import android.app.ActivityManager;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.text.format.DateUtils;
 import android.widget.Toast;
 
+import com.vunke.education.base.Configs;
 import com.vunke.education.log.WorkLog;
 
 import org.json.JSONException;
@@ -22,6 +30,7 @@ import java.util.Map;
  * Created by zhuxi on 2017/3/9.
  */
 public class UiUtils {
+    private static final String TAG = "UiUtils";
     /**
      *  吐司
      * @param string
@@ -215,4 +224,159 @@ public class UiUtils {
         return false;
     }
 
+    /**
+     * 启动应用
+     */
+    public static void StartAPP(String packageName,String ClassName,int implementId,Context context){
+        if (TextUtils.isEmpty(packageName)&&TextUtils.isEmpty(ClassName)){
+            WorkLog.i(TAG,"StartAPP: start app failed ,get appinfo error");
+            showToast("启动应用失败：获取应用失败",context);
+        }else  if (!TextUtils.isEmpty(packageName)&&TextUtils.isEmpty(ClassName)){
+            WorkLog.i(TAG, "StartAPP: get class is null,startApk");
+            if (isPkgInstalled(context,packageName)){
+                WorkLog.i(TAG, "StartAPP: app is installed,startApk");
+                StartAPK(packageName,implementId,context);
+            }else{
+                WorkLog.i(TAG, "StartAPP: app not is installed");
+                showToast("应用未安装",context);
+            }
+        }else if (TextUtils.isEmpty(packageName)&&!TextUtils.isEmpty(ClassName)){
+            WorkLog.i(TAG, "StartAPP: get packageName is null,start locat Activity");
+            StartLocatActivity(ClassName,implementId,context);
+        }else  if (!TextUtils.isEmpty(packageName)&&!TextUtils.isEmpty(ClassName)){
+            if (isPkgInstalled(context,packageName)){
+                WorkLog.i(TAG, "StartAPP: app is installed,startApk");
+                StartActivity(packageName,ClassName,implementId,context);
+            }else{
+                WorkLog.i(TAG, "StartAPP: app not is installed");
+                showToast("应用未安装",context);
+            }
+        }
+    }
+    /**
+     * 根据包名启动APK
+     *
+     * @param packageName
+     * @param context
+     */
+    public static void StartAPK(String packageName,int implementId, Context context) {
+        if (TextUtils.isEmpty(packageName)) {
+            WorkLog.e(TAG, "packageName is null");
+            return;
+        }
+        PackageInfo pi;
+        try {
+            pi = context.getPackageManager().getPackageInfo(packageName, 0);
+            Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+            resolveIntent.setPackage(pi.packageName);
+            PackageManager pManager = context.getPackageManager();
+            List apps = pManager.queryIntentActivities(resolveIntent, 0);
+            ResolveInfo ri = (ResolveInfo) apps.iterator().next();
+            if (ri != null) {
+                packageName = ri.activityInfo.packageName;
+                String className = ri.activityInfo.name;
+                WorkLog.i(TAG, "start package:"+packageName+",start package launcher:"+ className);
+                Configs.intent= new Intent(Intent.ACTION_MAIN);
+                ComponentName cn = new ComponentName(packageName, className);
+                Configs.intent.setComponent(cn);
+                Configs.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent_putExtra(implementId);
+                context.startActivity(Configs.intent);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 判断应用是否安装
+     * @param context
+     * @param packageName
+     * @return
+     */
+    public static boolean isPkgInstalled(Context context, String packageName) {
+        if (TextUtils.isEmpty(packageName)) {
+            WorkLog.i(TAG, "isPkgInstalled: get packageName is null");
+            return false;
+        }
+        ApplicationInfo info = null;
+        try {
+            info = context.getPackageManager().getApplicationInfo(packageName, 0);
+            return info != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    /**
+     * 根据包名和类名启动APK
+     *
+     * @param packageName
+     * @param ClassName
+     * @param context
+     */
+    public static void StartActivity(String packageName,String ClassName,int implementId, Context context) {
+        if (TextUtils.isEmpty(packageName)) {
+            WorkLog.e(TAG, "packageName is null");
+            showToast("启动失败",context);
+            return ;
+        }
+        if (TextUtils.isEmpty(ClassName)){
+            WorkLog.e(TAG, "className is null");
+            StartAPK(packageName,implementId,context);
+            return ;
+        }
+        WorkLog.i(TAG, "StartActivity: get packageName;"+packageName);
+        WorkLog.i(TAG, "StartActivity: get className;"+ClassName);
+        Configs.intent = new Intent();
+        Configs.intent.setClassName(packageName, ClassName);
+//        方法一：
+//        if (context.getPackageManager().resolveActivity(intent, 0) == null) {
+//            // 说明系统中不存在这个activity
+//        }
+//        方法二：
+        if(Configs.intent.resolveActivity(context.getPackageManager()) != null) {
+            // 说明系统中不存在这个activity
+            WorkLog.i(TAG, "StartActivity: get Activity success");
+            Configs.intent = new Intent(Intent.ACTION_MAIN);
+            ComponentName cn = new ComponentName(packageName, ClassName);
+            Configs.intent.setComponent(cn);
+            Configs.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent_putExtra(implementId);
+            context.startActivity(Configs.intent);
+        }else{
+            showToast("启动失败,获取本地页面失败",context);
+            WorkLog.i(TAG, "StartActivity: startActivity error ,get Activity failed");
+        }
+//        方法三：
+//        List<ResolveInfo> list = context.getPackageManager().queryIntentActivities(intent, 0);
+//        if (list.size() == 0) {
+//            // 说明系统中不存在这个activity
+//        }
+    }
+
+    /**
+     * 启动本地Activity
+     * @param ClassName
+     * @param context
+     */
+    public static void StartLocatActivity(String ClassName,int implementId,Context context){
+        if (TextUtils.isEmpty(ClassName)){
+            WorkLog.e(TAG, "className is null");
+            showToast("启动本地页面失败",context);
+            return ;
+        }
+        Configs.intent = new Intent();
+        Configs.intent.setClassName(context, ClassName);
+        if(Configs.intent.resolveActivity(context.getPackageManager()) != null) {
+            Configs.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent_putExtra(implementId);
+            context.startActivity(Configs.intent);
+        }
+    }
+
+    private static void intent_putExtra(int implementId) {
+        if (implementId!=-1){
+            Configs.intent.putExtra("infoId",implementId);
+        }
+    }
 }

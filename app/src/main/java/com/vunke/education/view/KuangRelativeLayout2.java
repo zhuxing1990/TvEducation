@@ -42,7 +42,7 @@ public class KuangRelativeLayout2 extends RelativeLayout {
         setWillNotDraw(false);
         mRect = new Rect();
         mBound = new Rect();
-        mDrawable = getResources().getDrawable(R.drawable.kuang3);
+        mDrawable = getResources().getDrawable(R.drawable.kuang2);
         setChildrenDrawingOrderEnabled(true);
         setClickable(true);
         setClipChildren(false);
@@ -66,7 +66,7 @@ public class KuangRelativeLayout2 extends RelativeLayout {
 //            Log.d(TAG, "draw: focus true");
             super.getDrawingRect(mRect);
 //            Log.d(TAG, "onDraw: "+"left"+mRect.left+""+"top"+mRect.top+"right"+mRect.right+"bottom"+mRect.bottom);
-            mBound.set(mRect.left-3, mRect.top-8,mRect.right+3,mRect.bottom+8);
+            mBound.set(mRect.left-1, mRect.top-1,mRect.right+1,mRect.bottom+1);
             mDrawable.setBounds(mBound);
             canvas.save();
             mDrawable.draw(canvas);

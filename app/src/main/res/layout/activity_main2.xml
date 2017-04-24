@@ -86,7 +86,7 @@
                 android:layout_height="137dp"
                 android:scaleType="fitXY"
                 android:layout_centerInParent="true"
-                />
+                android:src="@drawable/default_pic2"/>
         </com.vunke.education.view.KuangRelativeLayout>
         <com.vunke.education.view.KuangRelativeLayout
             android:id="@+id/main_relative_view2"
@@ -102,7 +102,7 @@
                 android:layout_width="220dp"
                 android:layout_height="137dp"
                 android:scaleType="fitXY"
-                />
+                android:src="@drawable/default_pic2"/>
         </com.vunke.education.view.KuangRelativeLayout>
         <com.vunke.education.view.KuangRelativeLayout
             android:id="@+id/main_relative_view3"
@@ -118,7 +118,7 @@
                 android:layout_width="220dp"
                 android:layout_height="137dp"
                 android:scaleType="fitXY"
-                />
+                android:src="@drawable/default_pic2" />
         </com.vunke.education.view.KuangRelativeLayout>
 
         <com.vunke.education.view.KuangRelativeLayout
@@ -138,7 +138,7 @@
                 android:layout_width="220dp"
                 android:layout_height="137dp"
                 android:scaleType="fitXY"
-                />
+                android:src="@drawable/default_pic2"/>
         </com.vunke.education.view.KuangRelativeLayout>
         <com.vunke.education.view.KuangRelativeLayout
             android:id="@+id/main_relative_view5"
@@ -156,7 +156,7 @@
                 android:layout_width="220dp"
                 android:layout_height="137dp"
                 android:scaleType="fitXY"
-                />
+                android:src="@drawable/default_pic2"/>
         </com.vunke.education.view.KuangRelativeLayout>
         <com.vunke.education.view.KuangRelativeLayout
             android:id="@+id/main_relative_view6"
@@ -174,7 +174,7 @@
                 android:layout_width="220dp"
                 android:layout_height="137dp"
                 android:scaleType="fitXY"
-                />
+                android:src="@drawable/default_pic2" />
         </com.vunke.education.view.KuangRelativeLayout>
     </RelativeLayout>
 

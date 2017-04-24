@@ -40,15 +40,22 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
     private List<VideoListBean> videoList;
     private Subscription subscribe;
     private TvVideoListAdapter adapter;
+    private String infoId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_video_list);
+        getIntentData();
         initView();
         initListener();
         initData();
     }
-
+    public void getIntentData() {
+        Intent intent = getIntent();
+        if (intent.hasExtra("infoId")){
+            infoId = intent.getStringExtra("infoId");
+        }
+    }
     private void initData() {
 
         videoList = new ArrayList<>();
@@ -187,7 +194,7 @@ public class TvVideoListActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (!subscribe.isUnsubscribed()){
+        if (subscribe!=null&&!subscribe.isUnsubscribed()){
             subscribe.unsubscribe();
             subscribe=null;
         }

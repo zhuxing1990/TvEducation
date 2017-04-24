@@ -89,10 +89,10 @@ public class TvFocusGridView3 extends GridView {
                 tmepView.getGlobalVisibleRect(r);//Rect(62, 152 - 398, 512) 计算出imageview在屏幕的坐标点
                 getGlobalVisibleRect(mTmpGridViewRect);//计算出屏幕的坐标点 Rect(45, 141 - 1875, 1035)
                 r.offset(-mTmpGridViewRect.left, -mTmpGridViewRect.top);//向左移动--mTmpGridViewRect.left就是向右滑动-mTmpGridViewRect.left
-                r.top -= mMySelectedPaddingRect.top + DensityUtil.dip2px(getContext(), 5);
+                r.top -= mMySelectedPaddingRect.top + DensityUtil.dip2px(getContext(),10);
                 r.left -= mMySelectedPaddingRect.left + DensityUtil.dip2px(getContext(),5);
                 r.right += mMySelectedPaddingRect.right + DensityUtil.dip2px(getContext(), 5);
-                r.bottom += mMySelectedPaddingRect.bottom + DensityUtil.dip2px(getContext(), 5);
+                r.bottom += mMySelectedPaddingRect.bottom + DensityUtil.dip2px(getContext(), 1);
                 mMySelectedDrawable.setBounds(r);
                 mMySelectedDrawable.draw(canvas);
             }

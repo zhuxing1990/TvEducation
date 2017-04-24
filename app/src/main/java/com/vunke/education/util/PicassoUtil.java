@@ -47,7 +47,7 @@ public class PicassoUtil {
     /**
      * 设置加载图片失败的默认图
      */
-    private int load_error = R.drawable.load_fail;
+    private int load_error = R.drawable.default_pic3;
 
 
     public PicassoUtil() {

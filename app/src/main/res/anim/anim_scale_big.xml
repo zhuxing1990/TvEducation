@@ -12,8 +12,8 @@
         android:pivotX="50.0%"
         android:pivotY="50.0%"
         android:repeatCount="0"
-        android:toXScale="1.05"
-        android:toYScale="1.05"
+        android:toXScale="1.1"
+        android:toYScale="1.1"
         android:fillAfter="true" />
 
 </set>

@@ -2,89 +2,94 @@
 <com.vunke.education.view.MainHorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:scrollbars="none">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/main_home_page"
-            android:layout_width="wrap_content"
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/home_page"
-            android:layout_margin="25dp"
-            android:textSize="24sp"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_boutique_recommend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/boutique_recommend"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:layout_toRightOf="@+id/main_home_page"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_infant_enlightenment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/infant_enlightenment"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:layout_toRightOf="@+id/main_boutique_recommend"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_primary_and_secondary_schools"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/main_infant_enlightenment"
-            android:text="@string/primary_and_secondary_schools"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_foreign_study"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/foreign_study"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:layout_toRightOf="@+id/main_primary_and_secondary_schools"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_open_class"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/open_class"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:layout_toRightOf="@+id/main_foreign_study"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_expert_lecture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/expert_lecture"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:layout_toRightOf="@+id/main_open_class"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_outdoor_activities"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/outdoor_activities"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:layout_toRightOf="@+id/main_expert_lecture"
-            android:textColor="@color/color_text_white3"/>
-        <TextView
-            android:id="@+id/main_free_tutorial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/free_tutorial"
-            android:textSize="24sp"
-            android:layout_margin="25dp"
-            android:layout_toRightOf="@+id/main_outdoor_activities"
-            android:textColor="@color/color_text_white3"/>
-    </RelativeLayout>
+            android:padding="20dp">
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_home_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="20dp"
+                android:textSize="24sp"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_boutique_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/main_home_page"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_infant_enlightenment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/main_boutique_recommend"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_primary_and_secondary_schools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/main_infant_enlightenment"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_foreign_study"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/main_primary_and_secondary_schools"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_open_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/main_foreign_study"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_expert_lecture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/main_open_class"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_outdoor_activities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/main_expert_lecture"
+                android:textColor="@color/color_text_white3"/>
+            <com.vunke.education.view.KuangTextView
+                android:id="@+id/main_free_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="24sp"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/main_outdoor_activities"
+                android:textColor="@color/color_text_white3"/>
+        </RelativeLayout>
+
 </com.vunke.education.view.MainHorizontalScrollView>
