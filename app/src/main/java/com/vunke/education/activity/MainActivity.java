@@ -1,7 +1,5 @@
 package com.vunke.education.activity;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -26,8 +24,8 @@ import com.vunke.education.model.MainDataBean;
 import com.vunke.education.network_request.NetWorkRequest;
 import com.vunke.education.util.NetUtils;
 import com.vunke.education.util.PicassoUtil;
+import com.vunke.education.util.SharedPreferencesUtil;
 import com.vunke.education.util.UiUtils;
-import com.vunke.education.util.UserInfoUtil;
 import com.vunke.education.view.HorseRaceLampTextView;
 import com.vunke.education.view.KuangRelativeLayout;
 import com.vunke.education.view.KuangTextView;
@@ -60,54 +58,123 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
 //    String videoPath = "http://v.cctv.com/flash/mp4video6/TMS/2011/01/05/cf752b1c12ce452b3040cab2f90bc265_h264818000nero_aac32-1.mp4";
 //    String videoPath =  "http://10.255.30.137:8082/EDS/RedirectPlay/lutong/vod/lutongCP0664900538/CP0664900538";
     String videoPath = "http://live.hcs.cmvideo.cn:8088/wd-hunanhd-1200/01.m3u8?msisdn=3000000000000&mdspid=&spid=699017&netType=5&sid=2201064496&pid=2028595851&timestamp=20170327111900&Channel_ID=0116_22300109-91000-20300&ProgramID=603996975&ParentNodeID=-99&preview=1&playseek=000000-000600&client_ip=123.206.208.186&assertID=2201064496&SecurityKey=20170327111900&mtv_session=cebd4400b57b1ed403b5f6c4704107b4&HlsSubType=1&HlsProfileId=1&encrypt=7e242fdb1db7a9a66d83221440f09cee";
+    /**
+     *  广告播放控件
+     */
     private HorseRaceLampTextView main_broadcas_text;
+    /**
+     *   推荐位  1号
+     */
     private KuangRelativeLayout main_relative_view1;
+    /**
+     *   推荐位  2号
+     */
     private KuangRelativeLayout main_relative_view2;
+    /**
+     *   推荐位  3号
+     */
     private KuangRelativeLayout main_relative_view3;
+    /**
+     *   推荐位  4号
+     */
     private KuangRelativeLayout main_relative_view4;
+    /**
+     *   推荐位  5号
+     */
     private KuangRelativeLayout main_relative_view5;
+    /**
+     *   推荐位  6号
+     */
     private KuangRelativeLayout main_relative_view6;
+    /**
+     *  观看历史
+     */
     private KuangRelativeLayout main_relative_watch_history;
+    /**
+     *  排行榜
+     */
     private KuangRelativeLayout main_relative_ranking_list;
+
+    /**
+     *  SP 提供内容 1
+     */
     private KuangRelativeLayout main_ralative_small_view1;
+     /**
+     *  SP 提供内容 2
+     */
     private KuangRelativeLayout main_ralative_small_view2;
+    /**
+     *  SP 提供内容 3
+     */
     private KuangRelativeLayout main_ralative_small_view3;
+    /**
+     *  SP 提供内容 4
+     */
     private KuangRelativeLayout main_ralative_small_view4;
+    /**
+     *  订购按钮
+     */
     private KuangRelativeLayout main_ordering;
 
-
+    /**
+     *  推荐位  图片控件
+     */
     private RoundAngleImageView main_big_view1, main_big_view2, main_big_view3, main_big_view4, main_big_view5, main_big_view6;
+    /**
+     *  SP 提供内容 图片控件
+     */
     private RoundAngleImageView main_small_view1, main_small_view2, main_small_view3, main_small_view4;
+    /**
+     *  分类标签 首页
+     */
     private KuangTextView main_home_page;
+    /**
+     *  分类标签 精品推荐
+     */
     private KuangTextView main_boutique_recommend;
+    /**
+     *  分类标签 幼儿启蒙
+     */
     private KuangTextView main_infant_enlightenment;
+    /**
+     *  分类标签 中小学
+     */
     private KuangTextView main_primary_and_secondary_schools;
+    /**
+     *  分类标签 外国留学
+     */
     private KuangTextView main_foreign_study;
+    /**
+     *  分类标签 公开课
+     */
     private KuangTextView main_open_class;
+    /**
+     *  分类标签 户外活动
+     */
     private KuangTextView main_expert_lecture;
+    /**
+     *  分类标签 专家讲座
+     */
     private KuangTextView main_outdoor_activities;
+    /**
+     *  分类标签 免费教程
+     */
     private KuangTextView main_free_tutorial;
-
+    /**
+     * 用户ID
+     */
     private String userId;
+    /**
+     *首页数据信息
+     */
     private MainDataBean bean;
     private boolean startPlay = true;
+    /**
+     *  首页视频播放控件
+     */
     private SurfaceView main_surfaceView;
+
     private MediaPlayer mediaPlayer;
-
-    BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (intent != null) {
-                String action = intent.getAction();
-                if (action.equals(UserInfoUtil.LOAD_USER_INFO_ACTION)) {
-                    userId = intent.getStringExtra("userID");//用户ID
-                    WorkLog.i(TAG, "initData: userID:" + userId);
-                    initData();
-                }
-            }
-        }
-    };
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -118,32 +185,36 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         } else {
             showToast("网络未连接");
         }
-        UserInfoUtil.initUserInfo(getApplicationContext());
-        UserInfoUtil.registerBoradcastReceiver(getApplicationContext(), mBroadcastReceiver);
+        userId = SharedPreferencesUtil.getStringValue(mcontext,SharedPreferencesUtil.USER_ID,"");
+        WorkLog.i(TAG, "onCreate: userId:"+userId);
         initView();
         initListener();
         initVideo();
+        initData();
     }
 
+    /**
+     * 初始化控件
+     */
     private void initView() {
         main_surfaceView = (SurfaceView) findViewById(R.id.main_surfaceView);
         main_broadcas_text = (HorseRaceLampTextView) findViewById(R.id.main_broadcas_text);
+
         main_relative_view1 = (KuangRelativeLayout) findViewById(R.id.main_relative_view1);
         main_relative_view2 = (KuangRelativeLayout) findViewById(R.id.main_relative_view2);
         main_relative_view3 = (KuangRelativeLayout) findViewById(R.id.main_relative_view3);
         main_relative_view4 = (KuangRelativeLayout) findViewById(R.id.main_relative_view4);
         main_relative_view5 = (KuangRelativeLayout) findViewById(R.id.main_relative_view5);
         main_relative_view6 = (KuangRelativeLayout) findViewById(R.id.main_relative_view6);
-//
-        main_relative_watch_history = (KuangRelativeLayout) findViewById(R.id.main_relative_watch_history);
 
+        main_relative_watch_history = (KuangRelativeLayout) findViewById(R.id.main_relative_watch_history);
         main_relative_ranking_list = (KuangRelativeLayout) findViewById(R.id.main_relative_ranking_list);
+        main_ordering = (KuangRelativeLayout) findViewById(R.id.main_ordering);
 
         main_ralative_small_view1 = (KuangRelativeLayout) findViewById(R.id.main_ralative_small_view1);
         main_ralative_small_view2 = (KuangRelativeLayout) findViewById(R.id.main_ralative_small_view2);
         main_ralative_small_view3 = (KuangRelativeLayout) findViewById(R.id.main_ralative_small_view3);
         main_ralative_small_view4 = (KuangRelativeLayout) findViewById(R.id.main_ralative_small_view4);
-        main_ordering = (KuangRelativeLayout) findViewById(R.id.main_ordering);
 
         main_big_view1 = (RoundAngleImageView) findViewById(R.id.main_big_view1);
         main_big_view2 = (RoundAngleImageView) findViewById(R.id.main_big_view2);
@@ -167,6 +238,9 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         main_free_tutorial = (KuangTextView) findViewById(R.id.main_free_tutorial);
     }
 
+    /**
+     * 监听事件
+     */
     private void initListener() {
         main_relative_view1.setOnClickListener(this);
         main_relative_view2.setOnClickListener(this);
@@ -362,6 +436,9 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
 
     }
 
+    /**
+     * 初始化视频
+     */
     private void initVideo() {
         Observable.timer(500, TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
             @Override
@@ -371,6 +448,9 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         });
     }
 
+    /**
+     * 播放视频
+     */
     private void videoPlay() {
         try {
             if (mediaPlayer != null && mediaPlayer.isPlaying()) {
@@ -462,6 +542,9 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         mediaPlayer.seekTo(0);
     }
 
+    /**
+     * 停止播放视频
+     */
     private void videoStop() {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -485,6 +568,9 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         initVideo();
     }
 
+    /**
+     * Activity 生命周期  暂停
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -493,7 +579,9 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
             mediaPlayer.pause();
         }
     }
-
+    /**
+     * Activity 生命周期   重新开始
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -506,20 +594,22 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
             mediaPlayer.start();
         }
     }
-
+    /**
+     * Activity 生命周期   销毁
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        try {
-            if (mBroadcastReceiver != null) {
-                unregisterReceiver(mBroadcastReceiver);
-            }
-        } catch (IllegalArgumentException e) {
-            // e.printStackTrace();
-        }
         videoStop();
     }
 
+    /**
+     * 按键监听事件
+     * @param v
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         switch (v.getId()) {
@@ -577,10 +667,20 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         return false;
     }
 
+    /**
+     *   判断按键是否是在按下的状态
+     *   ture 按下   false 弹起
+     * @param event
+     * @return
+     */
     private boolean isKeyDown(KeyEvent event) {
         return event.getAction() == KeyEvent.ACTION_DOWN;
     }
 
+
+    /**
+     *  记录按下返回键的时间
+     */
     private long back_time = 0;
 
     @Override
@@ -599,6 +699,10 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         return super.onKeyDown(keyCode, event);
     }
 
+    /**
+     * 点击时间
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -672,6 +776,10 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         }
     }
 
+    /**
+     * 开始启动应用
+     * @param position
+     */
     private void StartUp(int position) {
         if (BeanHasData(bean)) {
             String packageName = bean.getIndex().get(position).getImplement_package();
@@ -682,6 +790,10 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
         UploadTimes(position);
     }
 
+    /**
+     *  上传点击次数
+     * @param position
+     */
     private void UploadTimes(int position) {
         try {
             String statisticsId = bean.getIndex().get(position).getIndex_id();
@@ -698,13 +810,13 @@ public class MainActivity extends BaseActivity implements View.OnKeyListener, Vi
             OkGo.post(NetWorkRequest.BaseUrl + NetWorkRequest.STATISTICES_RBIT).tag(this).params("json", json.toString()).execute(new StringCallback() {
                 @Override
                 public void onSuccess(String s, Call call, Response response) {
-                    WorkLog.i(TAG, "onSuccess:--------------------------------------------------------------" + s);
+                    WorkLog.i(TAG, "onSuccess: upload times success" + s);
                 }
 
                 @Override
                 public void onError(Call call, Response response, Exception e) {
                     super.onError(call, response, e);
-                    WorkLog.e(TAG, "onError:---------------------------------------------------------------- ");
+                    WorkLog.e(TAG, "onError: upload times error");
                 }
             });
         } catch (Exception e) {

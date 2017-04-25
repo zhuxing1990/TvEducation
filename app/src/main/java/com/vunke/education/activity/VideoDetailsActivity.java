@@ -22,6 +22,8 @@ import com.vunke.education.model.VideoDetailsBean;
 import com.vunke.education.network_request.NetWorkRequest;
 import com.vunke.education.util.DataPosttingUtil;
 import com.vunke.education.util.PicassoUtil;
+import com.vunke.education.util.SharedPreferencesUtil;
+import com.vunke.education.util.UiUtils;
 import com.vunke.education.view.TvFocusGridView3;
 
 import org.json.JSONObject;
@@ -49,10 +51,12 @@ public class VideoDetailsActivity extends BaseActivity implements View.OnKeyList
     private TextView videodetails_synopslscontent;
     private TextView videodetails_videotitle;
     private ImageView videodetails_videoimg;
+    private   String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_videodetails);
+        userId = SharedPreferencesUtil.getStringValue(mcontext,SharedPreferencesUtil.USER_ID,"");
         getIntentData();
         initView();
         //初始化数据
@@ -118,11 +122,12 @@ public class VideoDetailsActivity extends BaseActivity implements View.OnKeyList
             showToast("未找到相关信息");
             return;
         }
+
         //json = {“versionCode”,”xx”,”userId”:”id”,”infoId”:”infoid”}
         try {
             JSONObject json = new JSONObject();
             json.put("versionCode","1");
-            json.put("userId","test");
+            json.put("userId",userId);
             json.put("infoId",infoId);
             WorkLog.i(TAG, "initData: json:"+json.toString());
             OkGo.post(NetWorkRequest.BaseUrl + NetWorkRequest.FIND_BYI_ID_INFO).tag(this).params("json", json.toString()).execute(new StringCallback() {
@@ -199,8 +204,8 @@ public class VideoDetailsActivity extends BaseActivity implements View.OnKeyList
 
             JSONObject json = new JSONObject();
             json.put("istop",videoDetailsBean.getMode().getIstop());
-            json.put("userId","1");
-            json.put("versionCode","1");
+            json.put("userId",userId);
+            json.put("versionCode", UiUtils.getVersionCode(mcontext));
             WorkLog.i(TAG,"json:"+json.toString());
             OkGo.post(NetWorkRequest.BaseUrl + NetWorkRequest.INFO_VIDEO_QUERY).tag(this).params("json",json.toString()).execute(new StringCallback() {
                 @Override

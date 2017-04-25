@@ -7,6 +7,7 @@ import android.content.Intent;
 
 import com.lzy.okgo.OkGo;
 import com.vunke.education.log.WorkLog;
+import com.vunke.education.util.SharedPreferencesUtil;
 import com.vunke.education.util.UserInfoUtil;
 
 /**
@@ -28,6 +29,8 @@ public class MyApplication extends Application{
                     if (action.equals(UserInfoUtil.LOAD_USER_INFO_ACTION)) {
                         userId = intent.getStringExtra("userID");//用户ID
                         WorkLog.i(TAG, "initData: userID:" + userId);
+                        SharedPreferencesUtil.setStringValue(getApplicationContext(),SharedPreferencesUtil.USER_ID,userId);
+                        unregisterReceiver(this);
                     }
                 }
             }
