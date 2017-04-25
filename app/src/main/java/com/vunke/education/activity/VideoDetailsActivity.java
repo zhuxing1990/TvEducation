@@ -235,7 +235,7 @@ public class VideoDetailsActivity extends BaseActivity implements View.OnKeyList
                     super.onAfter(s, e);
                     WorkLog.i(TAG, "onAfter: ");
                     if (infoVideoQueryBean!=null ){
-                        if (null !=infoVideoQueryBean&&infoVideoQueryBean.getInfoVideo().size()!=0)
+                        if (null !=infoVideoQueryBean.getInfoVideo()&&infoVideoQueryBean.getInfoVideo().size()!=0)
                          adapter = new InfoVideoQueryAdapter(infoVideoQueryBean.getInfoVideo(),mcontext);
                         initGridView();
                     }
